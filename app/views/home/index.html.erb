@@ -1,0 +1,10 @@
+<div class="container">
+  <h1>Idiomary</h1>
+  <p>Scopri il significato dei modi di dire</p>
+
+  <% if user_signed_in? %>
+    <p>Bentornato <%= current_user.email %>!</p>
+  <% else %>
+    <p>Registrati per salvare i tuoi modi di dire preferiti</p>
+  <% end %>
+</div>
