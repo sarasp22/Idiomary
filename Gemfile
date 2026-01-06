@@ -60,6 +60,11 @@ group :development do
   # gem "spring"
 end
 
+gem "ruby_llm"
+
+gem 'gemini-ai'
+gem 'dotenv-rails', groups: [:development, :test]
+
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
