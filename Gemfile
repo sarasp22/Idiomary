@@ -64,7 +64,7 @@ gem 'devise'
 
 gem "ruby_llm"
 
-gem 'gemini-ai'
+gem 'httparty'
 gem 'dotenv-rails', groups: [:development, :test]
 
 group :test do
