@@ -60,6 +60,8 @@ group :development do
   # gem "spring"
 end
 
+gem 'devise'
+
 gem "ruby_llm"
 
 gem 'gemini-ai'
