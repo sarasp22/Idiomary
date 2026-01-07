@@ -9,35 +9,8 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
   </head>
 
-  <body>
-    <header>
-      <nav>
-        <div class="nav-left">
-          <%= link_to t('site.title'), root_path, class: "logo" %>
-        </div>
-
-        <div class="nav-center">
-          <div class="language-selector">
-            <%= link_to "🇬🇧 EN", url_for(locale: :en), class: I18n.locale == :en ? 'active' : '' %>
-            <%= link_to "🇮🇹 IT", url_for(locale: :it), class: I18n.locale == :it ? 'active' : '' %>
-            <%= link_to "🇫🇷 FR", url_for(locale: :fr), class: I18n.locale == :fr ? 'active' : '' %>
-            <%= link_to "🇪🇸 ES", url_for(locale: :es), class: I18n.locale == :es ? 'active' : '' %>
-            <%= link_to "🇵🇹 PT", url_for(locale: :pt), class: I18n.locale == :pt ? 'active' : '' %>
-          </div>
-        </div>
-
-        <div class="nav-right">
-          <% if user_signed_in? %>
-            <p>Hello <%= current_user.email %></p>
-            <%= link_to t('nav.my_dictionary'), my_dictionary_path %>
-            <%= button_to t('nav.logout'), destroy_user_session_path, method: :delete %>
-          <% else %>
-            <%= link_to t('nav.login'), new_user_session_path %>
-            <%= link_to t('nav.sign_up'), new_user_registration_path %>
-          <% end %>
-        </div>
-      </nav>
-    </header>
+  <body class="<%= controller_name %>-page <%= action_name %>-action">
+    
 
     <% if notice %>
       <p class="notice"><%= notice %></p>

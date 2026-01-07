@@ -5,7 +5,8 @@ Rails.application.routes.draw do
     root 'home#index'
 
     get 'search', to: 'translations#search', as: 'search'
-    post 'translate', to: 'translations#translate', as: 'translate'
+    post 'search', to: 'translations#search'
+
     post 'translations/save', to: 'translations#save', as: 'save_translation'
 
     get 'my_dictionary', to: 'translations#my_dictionary', as: 'my_dictionary'

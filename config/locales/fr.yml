@@ -1,7 +1,7 @@
 fr:
   site:
     title: "Idiomary"
-    tagline: "Découvrez la signification des expressions idiomatiques dans n'importe quelle langue"
+    tagline: "Débloquez le monde des expressions"
   nav:
     my_dictionary: "Mon Dictionnaire"
     logout: "Déconnexion"
@@ -9,14 +9,15 @@ fr:
     sign_up: "S'inscrire"
   home:
     start_searching: "Commencer la Recherche"
-    search_idioms: "🔍 Rechercher des Expressions"
-    search_desc: "Trouvez la signification de n'importe quelle expression"
-    multiple_languages: "🌍 Plusieurs Langues"
-    languages_desc: "Anglais, italien, français, espagnol et portugais"
-    your_dictionary: "📚 Votre Dictionnaire"
-    view_saved: "Voir vos expressions sauvegardées"
-    save_favorites: "💾 Sauvegarder les Favoris"
-    signup_to_save: "pour sauvegarder des expressions"
+    already_have_account: "Vous avez déjà un compte ?"
+    new_here: "Nouveau ici ?"
+    languages_desc: "Idiomary est votre pont culturel entre les langues. Ne vous contentez pas de traduire des mots : découvrez les expressions et les proverbes qui rendent chaque langue unique. Trouvez instantanément l'équivalent naturel dans votre langue."
+    card_1:
+     title: "Langues Multiples"
+     subtitle: "Anglais, Italien, Français, Espagnol et Portugais"
+    card_2:
+     title: "Votre Dictionnaire"
+     subtitle: "Enregistrez et consultez vos expressions favorites"
   search:
     title: "Rechercher une Expression"
     enter_idiom: "Entrez l'expression :"

@@ -1,7 +1,7 @@
 es:
   site:
     title: "Idiomary"
-    tagline: "Descubre el significado de modismos en cualquier idioma"
+    tagline: "Desbloquea el mundo de las expresiones"
   nav:
     my_dictionary: "Mi Diccionario"
     logout: "Cerrar Sesión"
@@ -9,14 +9,15 @@ es:
     sign_up: "Registrarse"
   home:
     start_searching: "Comenzar Búsqueda"
-    search_idioms: "🔍 Buscar Modismos"
-    search_desc: "Encuentra el significado de cualquier modismo"
-    multiple_languages: "🌍 Múltiples Idiomas"
-    languages_desc: "Inglés, italiano, francés, español y portugués"
-    your_dictionary: "📚 Tu Diccionario"
-    view_saved: "Ver tus modismos guardados"
-    save_favorites: "💾 Guardar Favoritos"
-    signup_to_save: "para guardar modismos"
+    already_have_account: "¿Ya tienes una cuenta?"
+    new_here: "¿Eres nuevo aquí?"
+    languages_desc: "Idiomary es tu puente cultural entre idiomas. No te limites a traducir palabras: descubre los modismos y proverbios que hacen que cada lengua sea única. Encuentra al instante el equivalente natural en tu propio idioma."
+    card_1:
+     title: "Múltiples Idiomas"
+     subtitle: "Inglés, Italiano, Francés, Español y Portugués"
+    card_2:
+     title: "Tu Diccionario"
+     subtitle: "Guarda y consulta tus modismos favoritos"
   search:
     title: "Buscar un Modismo"
     enter_idiom: "Ingresa el modismo:"

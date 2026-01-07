@@ -1,7 +1,7 @@
 en:
   site:
     title: "Idiomary"
-    tagline: "Discover the meaning of idioms in any language"
+    tagline: "Unlock the world of expressions"
   nav:
     my_dictionary: "My Dictionary"
     logout: "Logout"
@@ -9,14 +9,15 @@ en:
     sign_up: "Sign Up"
   home:
     start_searching: "Start Searching"
-    search_idioms: "🔍 Search Idioms"
-    search_desc: "Find the meaning of any idiom"
-    multiple_languages: "🌍 Multiple Languages"
-    languages_desc: "English, Italian, French, Spanish, and Portuguese"
-    your_dictionary: "📚 Your Dictionary"
-    view_saved: "View your saved idioms"
-    save_favorites: "💾 Save Favorites"
-    signup_to_save: "to save idioms"
+    already_have_account: "Already have an account?"
+    new_here: "New here?"
+    languages_desc: "Idiomary is your cultural bridge between languages. Don’t just translate words: discover the idioms and proverbs that make every language unique. Instantly find the natural equivalent in your own language."
+    card_1:
+      title: "Multiple Languages"
+      subtitle: "English, Italian, French, Spanish, and Portuguese"
+    card_2:
+      title: "Your Dictionary"
+      subtitle: "Save and view your favorite idioms"
   search:
     title: "Search for an Idiom"
     enter_idiom: "Enter the idiom:"

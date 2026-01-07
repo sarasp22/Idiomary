@@ -1,7 +1,7 @@
 it:
   site:
     title: "Idiomary"
-    tagline: "Scopri il significato dei modi di dire in qualsiasi lingua"
+    tagline: "Sblocca il mondo delle espressioni"
   nav:
     my_dictionary: "Il Mio Dizionario"
     logout: "Esci"
@@ -9,14 +9,15 @@ it:
     sign_up: "Registrati"
   home:
     start_searching: "Inizia la Ricerca"
-    search_idioms: "🔍 Cerca Modi di Dire"
-    search_desc: "Trova il significato di qualsiasi modo di dire"
-    multiple_languages: "🌍 Più Lingue"
-    languages_desc: "Inglese, italiano, francese, spagnolo e portoghese"
-    your_dictionary: "📚 Il Tuo Dizionario"
-    view_saved: "Visualizza i tuoi modi di dire salvati"
-    save_favorites: "💾 Salva i Preferiti"
-    signup_to_save: "per salvare i modi di dire"
+    already_have_account: "Hai già un account?"
+    new_here: "Nuovo qui?"
+    languages_desc: "Idiomary è il tuo ponte culturale tra le lingue. Non limitarti a tradurre parole: scopri i modi di dire e i proverbi che rendono unico ogni linguaggio. Trova istantaneamente l'equivalente naturale nella tua lingua."
+    card_1:
+      title: "Lingue Multiple"
+      subtitle: "Inglese, Italiano, Francese, Spagnolo e Portoghese"
+    card_2:
+      title: "Il Tuo Dizionario"
+      subtitle: "Salva e visualizza i tuoi idiomi preferiti"
   search:
     title: "Cerca un Modo di Dire"
     enter_idiom: "Inserisci il modo di dire:"

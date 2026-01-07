@@ -2,18 +2,15 @@ class TranslationsController < ApplicationController
   before_action :authenticate_user!, only: [:save, :my_dictionary, :destroy]
 
   def search
-  end
+    if params[:idiom].present?
+      @idiom = params[:idiom]
+      @source_lang = params[:source_lang]
+      @target_lang = params[:target_lang]
+      @interface_lang = I18n.locale.to_s
 
-  def translate
-    @idiom = params[:idiom]
-    @source_lang = params[:source_lang]
-    @target_lang = params[:target_lang]
-    @interface_lang = I18n.locale.to_s
-
-    service = IdiomTranslatorService.new
-    @result = service.translate_idiom(@idiom, @source_lang, @target_lang, @interface_lang)
-
-    render :result
+      service = IdiomTranslatorService.new
+      @result = service.translate_idiom(@idiom, @source_lang, @target_lang, @interface_lang)
+    end
   end
 
   def save

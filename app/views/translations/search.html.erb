@@ -1,10 +1,38 @@
 <div class="container">
+  <header>
+      <nav>
+        <div class="nav-left">
+          <%= link_to t('site.title'), root_path, class: "logo" %>
+        </div>
+
+        <div class="nav-center">
+          <div class="language-selector">
+            <%= link_to "🇬🇧 EN", url_for(locale: :en), class: I18n.locale == :en ? 'active' : '' %>
+            <%= link_to "🇮🇹 IT", url_for(locale: :it), class: I18n.locale == :it ? 'active' : '' %>
+            <%= link_to "🇫🇷 FR", url_for(locale: :fr), class: I18n.locale == :fr ? 'active' : '' %>
+            <%= link_to "🇪🇸 ES", url_for(locale: :es), class: I18n.locale == :es ? 'active' : '' %>
+            <%= link_to "🇵🇹 PT", url_for(locale: :pt), class: I18n.locale == :pt ? 'active' : '' %>
+          </div>
+        </div>
+
+        <div class="nav-right">
+          <% if user_signed_in? %>
+            <p>Hello <%= current_user.email %></p>
+            <%= link_to t('nav.my_dictionary'), my_dictionary_path %>
+            <%= button_to t('nav.logout'), destroy_user_session_path, method: :delete %>
+          <% else %>
+            <%= link_to t('nav.login'), new_user_session_path %>
+            <%= link_to t('nav.sign_up'), new_user_registration_path %>
+          <% end %>
+        </div>
+      </nav>
+    </header>
   <h1><%= t('search.title') %></h1>
 
-  <%= form_with url: translate_path, method: :post, data: { turbo: false }, class: "search-form" do |f| %>
+  <%= form_with url: search_path, method: :post, data: { turbo: false }, class: "search-form" do |f| %>
     <div class="form-group">
       <%= f.label :idiom, t('search.enter_idiom') %>
-      <%= f.text_field :idiom, placeholder: t('search.placeholder'), required: true, class: "form-input" %>
+      <%= f.text_field :idiom, placeholder: t('search.placeholder'), required: true, class: "form-input", value: @idiom %>
     </div>
 
     <div class="form-row">
@@ -16,7 +44,7 @@
           ['🇫🇷 French', 'fr'],
           ['🇪🇸 Spanish', 'es'],
           ['🇵🇹 Portuguese', 'pt']
-        ], {}, class: "form-select" %>
+        ], { selected: @source_lang }, class: "form-select" %>
       </div>
 
       <div class="form-group">
@@ -27,10 +55,36 @@
           ['🇫🇷 French', 'fr'],
           ['🇪🇸 Spanish', 'es'],
           ['🇵🇹 Portuguese', 'pt']
-        ], {}, class: "form-select" %>
+        ], { selected: @target_lang }, class: "form-select" %>
       </div>
     </div>
 
     <%= f.submit t('search.translate_button'), class: "btn btn-primary" %>
+  <% end %>
+
+  <% if @result.present? %>
+    <div class="result-card">
+      <h2>📖 <%= @idiom %></h2>
+      <p class="language-info"><%= t('result.from') %> <%= @source_lang.upcase %> <%= t('result.to') %> <%= @target_lang.upcase %></p>
+
+      <div class="translation-result">
+        <%= simple_format(@result) %>
+      </div>
+
+      <div class="actions">
+        <% if user_signed_in? %>
+          <%= button_to t('result.save_to_dictionary'), save_translation_path, method: :post, params: {
+            original_idiom: @idiom,
+            source_language: @source_lang,
+            target_language: @target_lang,
+            ai_response: @result
+          }, class: "btn btn-primary" %>
+        <% else %>
+          <p class="login-prompt">
+            <%= link_to t('nav.sign_up'), new_user_registration_path %> <%= t('result.signup_prompt') %>
+          </p>
+        <% end %>
+      </div>
+    </div>
   <% end %>
 </div>
