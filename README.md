@@ -56,8 +56,6 @@ rails db:migrate
 4. Configure Environment Variables
 Create a .env file in the root directory and add your keys (e.g., for AI translation services):
 
-Snippet di codice
-
 AI_SERVICE_API_KEY=your_key_here
 5. Start the Server
 Bash
@@ -81,9 +79,7 @@ This project is open source and available under the MIT License.
 
 📧 Contact
 Sara Spadari
-
 GitHub: @sarasp22
-
 LinkedIn: sara-spadari
 
 Idiomary - Break the ice in every language 🌍✨
