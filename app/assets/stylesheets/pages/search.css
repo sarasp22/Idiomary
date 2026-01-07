@@ -1,0 +1,247 @@
+.search-header-section {
+  background: #fff;
+  padding: 10px 20px 20px;
+  position: relative;
+}
+
+.search-top-bar {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.user-action-btn {
+  background: #f0f0f0;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #555;
+  border: 1px solid #ddd;
+}
+
+.search-logo-container {
+  display: flex;
+  justify-content: center;
+  margin-top: -10px;
+}
+
+.search-logo-small {
+  width: 160px;
+}
+
+.search-main-nav {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 20px;
+}
+
+.nav-item {
+  text-decoration: none;
+  color: #ccc;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 11px;
+}
+
+.nav-item i {
+  font-size: 22px;
+  margin-bottom: 4px;
+}
+
+.nav-item.active {
+  color: #48d1ac;
+}
+
+.search-map-style {
+  margin-top: 0 !important;
+  padding-top: 40px;
+  display: flex;
+  justify-content: center;
+}
+
+.map-overlay-content {
+  width: 90%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.search-box-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.search-input-wrapper {
+  background: white;
+  border-radius: 15px;
+  padding: 10px 20px;
+  display: flex;
+  width: 100%;
+  max-width: 450px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.search-input-field {
+  border: none;
+  width: 100%;
+  outline: none;
+  font-size: 16px;
+}
+
+.search-icon-submit {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  color: #333;
+}
+
+.language-selector-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  width: 100%;
+}
+
+.lang-pill {
+  background: white;
+  padding: 5px 12px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.lang-pill select {
+  border: none;
+  font-size: 13px;
+  background: transparent;
+  outline: none;
+  cursor: pointer;
+}
+
+.btn-translate-blue {
+  background: #3a7caf;
+  color: white;
+  border: none;
+  padding: 10px 40px;
+  border-radius: 30px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.btn-translate-blue:hover {
+  background: #2d618a;
+}
+
+.user-dropdown { position: relative; }
+.user-dropdown .dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 50px;
+  background-color: white;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  z-index: 1001;
+}
+
+.user-dropdown .dropdown-content.show {
+  display: block;
+}
+
+.result-display-card {
+  background: white;
+  border-radius: 20px;
+  padding: 25px;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  margin-top: 20px;
+}
+
+/* --- RESULT ACTIONS & BUTTONS --- */
+.result-actions {
+  margin-top: 25px;
+  width: 100%;
+  text-align: center;
+}
+
+.btn-save-green {
+  background-color: var(--color-brand, #48d1ac);
+  color: white;
+  border: none;
+  padding: 15px 25px;
+  border-radius: 30px;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  width: 100%;
+  transition: transform 0.2s, background-color 0.2s;
+}
+
+.btn-save-green:hover {
+  background-color: #3cbda0;
+  transform: translateY(-2px);
+}
+
+.btn-signup-alt {
+  background-color: #49CEA3; /* Un colore diverso per distinguere l'azione di registrazione */
+}
+
+/* --- LOGIN INVITATION STYLE --- */
+.login-invitation {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 15px;
+  border: 1px dashed #ddd;
+}
+
+.login-invitation p {
+  font-size: 14px;
+  color: #575757;
+  margin-bottom: 15px;
+}
+
+.small-login-link {
+  margin-top: 12px !important;
+  font-size: 12px !important;
+  color: #888 !important;
+}
+
+.small-login-link a {
+  color: #2B77B6;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.lang-pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.flag-mini {
+  font-size: 18px;
+  line-height: 1;
+  display: inline-block;
+  min-width: 24px; /* Evita che il selettore si sposti se l'emoji cambia larghezza */
+}

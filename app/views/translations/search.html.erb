@@ -1,90 +1,140 @@
-<div class="container">
-  <header>
-      <nav>
-        <div class="nav-left">
-          <%= link_to t('site.title'), root_path, class: "logo" %>
+<div class="home-container">
+  <div class="search-header-section">
+    <div class="search-top-bar">
+      <div class="user-dropdown">
+        <div class="user-action-btn" onclick="document.getElementById('user-menu').classList.toggle('show')">
+          <i class="fa-solid fa-user"></i>
         </div>
-
-        <div class="nav-center">
-          <div class="language-selector">
-            <%= link_to "🇬🇧 EN", url_for(locale: :en), class: I18n.locale == :en ? 'active' : '' %>
-            <%= link_to "🇮🇹 IT", url_for(locale: :it), class: I18n.locale == :it ? 'active' : '' %>
-            <%= link_to "🇫🇷 FR", url_for(locale: :fr), class: I18n.locale == :fr ? 'active' : '' %>
-            <%= link_to "🇪🇸 ES", url_for(locale: :es), class: I18n.locale == :es ? 'active' : '' %>
-            <%= link_to "🇵🇹 PT", url_for(locale: :pt), class: I18n.locale == :pt ? 'active' : '' %>
-          </div>
-        </div>
-
-        <div class="nav-right">
+        <div id="user-menu" class="dropdown-content">
           <% if user_signed_in? %>
-            <p>Hello <%= current_user.email %></p>
-            <%= link_to t('nav.my_dictionary'), my_dictionary_path %>
+            <p class="user-email"><%= current_user.email %></p>
             <%= button_to t('nav.logout'), destroy_user_session_path, method: :delete %>
           <% else %>
             <%= link_to t('nav.login'), new_user_session_path %>
             <%= link_to t('nav.sign_up'), new_user_registration_path %>
           <% end %>
         </div>
-      </nav>
-    </header>
-  <h1><%= t('search.title') %></h1>
-
-  <%= form_with url: search_path, method: :post, data: { turbo: false }, class: "search-form" do |f| %>
-    <div class="form-group">
-      <%= f.label :idiom, t('search.enter_idiom') %>
-      <%= f.text_field :idiom, placeholder: t('search.placeholder'), required: true, class: "form-input", value: @idiom %>
-    </div>
-
-    <div class="form-row">
-      <div class="form-group">
-        <%= f.label :source_lang, t('search.from') %>
-        <%= f.select :source_lang, [
-          ['🇬🇧 English', 'en'],
-          ['🇮🇹 Italian', 'it'],
-          ['🇫🇷 French', 'fr'],
-          ['🇪🇸 Spanish', 'es'],
-          ['🇵🇹 Portuguese', 'pt']
-        ], { selected: @source_lang }, class: "form-select" %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :target_lang, t('search.to') %>
-        <%= f.select :target_lang, [
-          ['🇮🇹 Italian', 'it'],
-          ['🇬🇧 English', 'en'],
-          ['🇫🇷 French', 'fr'],
-          ['🇪🇸 Spanish', 'es'],
-          ['🇵🇹 Portuguese', 'pt']
-        ], { selected: @target_lang }, class: "form-select" %>
       </div>
     </div>
 
-    <%= f.submit t('search.translate_button'), class: "btn btn-primary" %>
-  <% end %>
-
-  <% if @result.present? %>
-    <div class="result-card">
-      <h2>📖 <%= @idiom %></h2>
-      <p class="language-info"><%= t('result.from') %> <%= @source_lang.upcase %> <%= t('result.to') %> <%= @target_lang.upcase %></p>
-
-      <div class="translation-result">
-        <%= simple_format(@result) %>
-      </div>
-
-      <div class="actions">
-        <% if user_signed_in? %>
-          <%= button_to t('result.save_to_dictionary'), save_translation_path, method: :post, params: {
-            original_idiom: @idiom,
-            source_language: @source_lang,
-            target_language: @target_lang,
-            ai_response: @result
-          }, class: "btn btn-primary" %>
-        <% else %>
-          <p class="login-prompt">
-            <%= link_to t('nav.sign_up'), new_user_registration_path %> <%= t('result.signup_prompt') %>
-          </p>
-        <% end %>
-      </div>
+    <div class="search-logo-container">
+      <%= link_to root_path do %>
+        <%= image_tag "logo.png", alt: "idiomary logo", class: "search-logo-small" %>
+      <% end %>
     </div>
-  <% end %>
+
+    <div class="search-main-nav">
+      <%= link_to my_dictionary_path, class: "nav-item" do %>
+        <i class="fa-regular fa-bookmark"></i>
+        <span>Saved</span>
+      <% end %>
+      <%= link_to root_path, class: "nav-item active" do %>
+        <i class="fa-solid fa-house"></i>
+        <span>Home</span>
+      <% end %>
+      <a href="#" class="nav-item">
+        <i class="fa-solid fa-gear"></i>
+        <span>Settings</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="home-map-section search-map-style">
+    <div class="map-overlay-content">
+
+      <%= form_with url: search_path, method: :post, data: { turbo: false }, class: "search-box-container" do |f| %>
+        <div class="search-input-wrapper">
+          <%= f.text_field :idiom, placeholder: "Cerca un modo di dire...", class: "search-input-field", value: @idiom %>
+          <button type="submit" class="search-icon-submit">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+        </div>
+
+<div class="language-selector-row">
+  <div class="lang-pill">
+    <span class="flag-mini" id="flag-source">
+      <%= @source_lang == 'en' ? "🇬🇧" : (@source_lang == 'fr' ? "🇫🇷" : (@source_lang == 'es' ? "🇪🇸" : (@source_lang == 'pt' ? "🇵🇹" : "🇮🇹"))) %>
+    </span>
+    <%= f.select :source_lang, [['Italiano', 'it'], ['English', 'en'], ['Français', 'fr'], ['Spanish', 'es'], ['Portuguese', 'pt']],
+        { selected: @source_lang },
+        { onchange: "updateFlag(this, 'source')" } %>
+  </div>
+
+  <i class="fa-solid fa-arrow-right"></i>
+
+  <div class="lang-pill">
+    <span class="flag-mini" id="flag-target">
+      <%= @target_lang == 'en' ? "🇬🇧" : (@target_lang == 'it' ? "🇮🇹" : (@target_lang == 'es' ? "🇪🇸" : (@target_lang == 'pt' ? "🇵🇹" : "🇫🇷"))) %>
+    </span>
+    <%= f.select :target_lang, [['Français', 'fr'], ['Italiano', 'it'], ['English', 'en'], ['Spanish', 'es'], ['Portuguese', 'pt']],
+        { selected: @target_lang },
+        { onchange: "updateFlag(this, 'target')" } %>
+  </div>
 </div>
+
+        <%= f.submit "translate", class: "btn-translate-blue" %>
+      <% end %>
+
+<% if @result.present? %>
+  <div class="result-display-card">
+    <h2 class="result-title">“<%= @idiom %>”</h2>
+
+    <div class="result-content">
+      <%= simple_format(@result) %>
+    </div>
+
+    <div class="result-actions">
+      <% if user_signed_in? %>
+        <%= button_to save_translation_path, method: :post, params: {
+          original_idiom: @idiom,
+          source_language: @source_lang,
+          target_language: @target_lang,
+          ai_response: @result
+        }, class: "btn-save-green" do %>
+          <i class="fa-solid fa-bookmark" style="margin-right: 8px;"></i> Salva scheda
+        <% end %>
+      <% else %>
+        <div class="login-invitation">
+          <p><%= t('result.signup_prompt_text', default: "Vuoi salvare questo modo di dire?") %></p>
+          <%= link_to new_user_registration_path, class: "btn-save-green btn-signup-alt" do %>
+             Registrati per salvare
+          <% end %>
+          <p class="small-login-link">
+            Hai già un account? <%= link_to "Accedi", new_user_session_path %>
+          </p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
+    </div>
+  </div>
+</div>
+
+<script>
+  function updateFlag(selectElement, type) {
+    const flags = {
+      'it': '🇮🇹',
+      'en': '🇬🇧',
+      'fr': '🇫🇷',
+      'es': '🇪🇸',
+      'pt': '🇵🇹'
+    };
+
+    const selectedValue = selectElement.value;
+    const flagSpan = document.getElementById('flag-' + type);
+
+    if (flagSpan && flags[selectedValue]) {
+      flagSpan.innerText = flags[selectedValue];
+    }
+  }
+
+  document.addEventListener("turbo:load", function() {
+    const sourceSelect = document.querySelector('select[name="source_lang"]');
+    const targetSelect = document.querySelector('select[name="target_lang"]');
+
+    if (sourceSelect) updateFlag(sourceSelect, 'source');
+    if (targetSelect) updateFlag(targetSelect, 'target');
+  });
+</script>
