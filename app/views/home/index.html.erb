@@ -1,31 +1,31 @@
 <div class="container">
   <div class="hero">
-    <h1>Idiomary</h1>
-    <p class="tagline">Discover the meaning of idioms in any language</p>
+    <h1><%= t('site.title') %></h1>
+    <p class="tagline"><%= t('site.tagline') %></p>
 
-    <%= link_to "Start Searching", search_path, class: "btn btn-primary" %>
+    <%= link_to t('home.start_searching'), search_path, class: "btn btn-primary" %>
   </div>
 
   <div class="features">
     <div class="feature">
-      <h3>🔍 Search Idioms</h3>
-      <p>Find the meaning of any idiom</p>
+      <h3><%= t('home.search_idioms') %></h3>
+      <p><%= t('home.search_desc') %></p>
     </div>
 
     <div class="feature">
-      <h3>🌍 Multiple Languages</h3>
-      <p>English, Italian, and French</p>
+      <h3><%= t('home.multiple_languages') %></h3>
+      <p><%= t('home.languages_desc') %></p>
     </div>
 
     <% if user_signed_in? %>
       <div class="feature">
-        <h3>📚 Your Dictionary</h3>
-        <p><%= link_to "View your saved idioms", my_dictionary_path %></p>
+        <h3><%= t('home.your_dictionary') %></h3>
+        <p><%= link_to t('home.view_saved'), my_dictionary_path %></p>
       </div>
     <% else %>
       <div class="feature">
-        <h3>💾 Save Favorites</h3>
-        <p><%= link_to "Sign up", new_user_registration_path %> to save idioms</p>
+        <h3><%= t('home.save_favorites') %></h3>
+        <p><%= link_to t('nav.sign_up'), new_user_registration_path %> <%= t('home.signup_to_save') %></p>
       </div>
     <% end %>
   </div>

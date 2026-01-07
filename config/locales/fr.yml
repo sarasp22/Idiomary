@@ -1,0 +1,46 @@
+fr:
+  site:
+    title: "Idiomary"
+    tagline: "Découvrez la signification des expressions idiomatiques dans n'importe quelle langue"
+  nav:
+    my_dictionary: "Mon Dictionnaire"
+    logout: "Déconnexion"
+    login: "Connexion"
+    sign_up: "S'inscrire"
+  home:
+    start_searching: "Commencer la Recherche"
+    search_idioms: "🔍 Rechercher des Expressions"
+    search_desc: "Trouvez la signification de n'importe quelle expression"
+    multiple_languages: "🌍 Plusieurs Langues"
+    languages_desc: "Anglais, italien, français, espagnol et portugais"
+    your_dictionary: "📚 Votre Dictionnaire"
+    view_saved: "Voir vos expressions sauvegardées"
+    save_favorites: "💾 Sauvegarder les Favoris"
+    signup_to_save: "pour sauvegarder des expressions"
+  search:
+    title: "Rechercher une Expression"
+    enter_idiom: "Entrez l'expression :"
+    placeholder: "ex., break the ice"
+    from: "De :"
+    to: "À :"
+    translate_button: "Traduire"
+  result:
+    from: "De"
+    to: "à"
+    literal: "Littéral"
+    equivalent: "Équivalent"
+    meaning: "Signification"
+    example: "Exemple"
+    search_again: "← Rechercher à Nouveau"
+    save_to_dictionary: "💾 Sauvegarder dans le Dictionnaire"
+    signup_prompt: "pour sauvegarder cette expression"
+  dictionary:
+    title: "📚 Mon Dictionnaire"
+    empty_state: "Votre dictionnaire est vide."
+    start_searching: "Commencer à rechercher"
+    for_idioms: "des expressions !"
+    remove: "🗑️ Supprimer"
+    confirm_delete: "Êtes-vous sûr ?"
+  notices:
+    saved: "Expression sauvegardée dans votre dictionnaire !"
+    removed: "Expression supprimée de votre dictionnaire"

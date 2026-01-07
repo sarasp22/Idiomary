@@ -1,31 +1,46 @@
-# Files in the config/locales directory are used for internationalization and
-# are automatically loaded by Rails. If you want to use locales other than
-# English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t "hello"
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t("hello") %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more about the API, please read the Rails Internationalization guide
-# at https://guides.rubyonrails.org/i18n.html.
-#
-# Be aware that YAML interprets the following case-insensitive strings as
-# booleans: `true`, `false`, `on`, `off`, `yes`, `no`. Therefore, these strings
-# must be quoted to be interpreted as strings. For example:
-#
-#     en:
-#       "yes": yup
-#       enabled: "ON"
-
 en:
-  hello: "Hello world"
+  site:
+    title: "Idiomary"
+    tagline: "Discover the meaning of idioms in any language"
+  nav:
+    my_dictionary: "My Dictionary"
+    logout: "Logout"
+    login: "Login"
+    sign_up: "Sign Up"
+  home:
+    start_searching: "Start Searching"
+    search_idioms: "🔍 Search Idioms"
+    search_desc: "Find the meaning of any idiom"
+    multiple_languages: "🌍 Multiple Languages"
+    languages_desc: "English, Italian, French, Spanish, and Portuguese"
+    your_dictionary: "📚 Your Dictionary"
+    view_saved: "View your saved idioms"
+    save_favorites: "💾 Save Favorites"
+    signup_to_save: "to save idioms"
+  search:
+    title: "Search for an Idiom"
+    enter_idiom: "Enter the idiom:"
+    placeholder: "e.g., break the ice"
+    from: "From:"
+    to: "To:"
+    translate_button: "Translate"
+  result:
+    from: "From"
+    to: "to"
+    literal: "Literal"
+    equivalent: "Equivalent"
+    meaning: "Meaning"
+    example: "Example"
+    search_again: "← Search Again"
+    save_to_dictionary: "💾 Save to Dictionary"
+    signup_prompt: "to save this idiom"
+  dictionary:
+    title: "📚 My Dictionary"
+    empty_state: "Your dictionary is empty."
+    start_searching: "Start searching"
+    for_idioms: "for idioms!"
+    remove: "🗑️ Remove"
+    confirm_delete: "Are you sure?"
+  notices:
+    saved: "Idiom saved to your dictionary!"
+    removed: "Idiom removed from your dictionary"

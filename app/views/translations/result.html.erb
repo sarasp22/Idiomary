@@ -1,17 +1,17 @@
 <div class="container">
   <div class="result-card">
     <h2>📖 <%= @idiom %></h2>
-    <p class="language-info">From <%= @source_lang.upcase %> to <%= @target_lang.upcase %></p>
+    <p class="language-info"><%= t('result.from') %> <%= @source_lang.upcase %> <%= t('result.to') %> <%= @target_lang.upcase %></p>
 
     <div class="translation-result">
       <%= simple_format(@result) %>
     </div>
 
     <div class="actions">
-      <%= link_to "← Search Again", search_path, class: "btn btn-secondary" %>
+      <%= link_to t('result.search_again'), search_path, class: "btn btn-secondary" %>
 
       <% if user_signed_in? %>
-        <%= button_to "💾 Save to Dictionary", save_translation_path, method: :post, params: {
+        <%= button_to t('result.save_to_dictionary'), save_translation_path, method: :post, params: {
           original_idiom: @idiom,
           source_language: @source_lang,
           target_language: @target_lang,
@@ -19,7 +19,7 @@
         }, class: "btn btn-primary" %>
       <% else %>
         <p class="login-prompt">
-          <%= link_to "Sign up", new_user_registration_path %> to save this idiom
+          <%= link_to t('nav.sign_up'), new_user_registration_path %> <%= t('result.signup_prompt') %>
         </p>
       <% end %>
     </div>

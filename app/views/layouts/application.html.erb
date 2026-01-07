@@ -1,20 +1,19 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Idiomary</title>
+    <title><%= t('site.title') %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
   </head>
 
   <body>
-   <header>
+    <header>
       <nav>
         <div class="nav-left">
-          <%= link_to "Idiomary", root_path, class: "logo" %>
+          <%= link_to t('site.title'), root_path, class: "logo" %>
         </div>
 
         <div class="nav-center">
@@ -30,11 +29,11 @@
         <div class="nav-right">
           <% if user_signed_in? %>
             <p>Hello <%= current_user.email %></p>
-            <%= link_to "My Dictionary", my_dictionary_path %>
-            <%= button_to "Logout", destroy_user_session_path, method: :delete %>
+            <%= link_to t('nav.my_dictionary'), my_dictionary_path %>
+            <%= button_to t('nav.logout'), destroy_user_session_path, method: :delete %>
           <% else %>
-            <%= link_to "Login", new_user_session_path %>
-            <%= link_to "Sign Up", new_user_registration_path %>
+            <%= link_to t('nav.login'), new_user_session_path %>
+            <%= link_to t('nav.sign_up'), new_user_registration_path %>
           <% end %>
         </div>
       </nav>

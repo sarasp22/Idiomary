@@ -1,0 +1,46 @@
+es:
+  site:
+    title: "Idiomary"
+    tagline: "Descubre el significado de modismos en cualquier idioma"
+  nav:
+    my_dictionary: "Mi Diccionario"
+    logout: "Cerrar Sesión"
+    login: "Iniciar Sesión"
+    sign_up: "Registrarse"
+  home:
+    start_searching: "Comenzar Búsqueda"
+    search_idioms: "🔍 Buscar Modismos"
+    search_desc: "Encuentra el significado de cualquier modismo"
+    multiple_languages: "🌍 Múltiples Idiomas"
+    languages_desc: "Inglés, italiano, francés, español y portugués"
+    your_dictionary: "📚 Tu Diccionario"
+    view_saved: "Ver tus modismos guardados"
+    save_favorites: "💾 Guardar Favoritos"
+    signup_to_save: "para guardar modismos"
+  search:
+    title: "Buscar un Modismo"
+    enter_idiom: "Ingresa el modismo:"
+    placeholder: "ej., break the ice"
+    from: "De:"
+    to: "A:"
+    translate_button: "Traducir"
+  result:
+    from: "De"
+    to: "a"
+    literal: "Literal"
+    equivalent: "Equivalente"
+    meaning: "Significado"
+    example: "Ejemplo"
+    search_again: "← Buscar de Nuevo"
+    save_to_dictionary: "💾 Guardar en Diccionario"
+    signup_prompt: "para guardar este modismo"
+  dictionary:
+    title: "📚 Mi Diccionario"
+    empty_state: "Tu diccionario está vacío."
+    start_searching: "Comenzar a buscar"
+    for_idioms: "modismos!"
+    remove: "🗑️ Eliminar"
+    confirm_delete: "¿Estás seguro?"
+  notices:
+    saved: "¡Modismo guardado en tu diccionario!"
+    removed: "Modismo eliminado de tu diccionario"

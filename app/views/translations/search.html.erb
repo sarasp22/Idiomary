@@ -1,15 +1,15 @@
 <div class="container">
-  <h1>Search for an Idiom</h1>
+  <h1><%= t('search.title') %></h1>
 
   <%= form_with url: translate_path, method: :post, data: { turbo: false }, class: "search-form" do |f| %>
     <div class="form-group">
-      <%= f.label :idiom, "Enter the idiom:" %>
-      <%= f.text_field :idiom, placeholder: "e.g., break the ice", required: true, class: "form-input" %>
+      <%= f.label :idiom, t('search.enter_idiom') %>
+      <%= f.text_field :idiom, placeholder: t('search.placeholder'), required: true, class: "form-input" %>
     </div>
 
     <div class="form-row">
       <div class="form-group">
-        <%= f.label :source_lang, "From:" %>
+        <%= f.label :source_lang, t('search.from') %>
         <%= f.select :source_lang, [
           ['🇬🇧 English', 'en'],
           ['🇮🇹 Italian', 'it'],
@@ -20,7 +20,7 @@
       </div>
 
       <div class="form-group">
-        <%= f.label :target_lang, "To:" %>
+        <%= f.label :target_lang, t('search.to') %>
         <%= f.select :target_lang, [
           ['🇮🇹 Italian', 'it'],
           ['🇬🇧 English', 'en'],
@@ -31,6 +31,6 @@
       </div>
     </div>
 
-    <%= f.submit "Translate", class: "btn btn-primary" %>
+    <%= f.submit t('search.translate_button'), class: "btn btn-primary" %>
   <% end %>
 </div>

@@ -24,7 +24,7 @@ class TranslationsController < ApplicationController
       ai_response: params[:ai_response]
     )
 
-    redirect_to my_dictionary_path, notice: 'Idiom saved to your dictionary!'
+    redirect_to my_dictionary_path, notice: t('notices.saved')
   end
 
   def my_dictionary
@@ -34,6 +34,6 @@ class TranslationsController < ApplicationController
   def destroy
     @translation = current_user.saved_translations.find(params[:id])
     @translation.destroy
-    redirect_to my_dictionary_path, notice: 'Idiom removed from your dictionary'
+    redirect_to my_dictionary_path, notice: t('notices.removed')
   end
 end

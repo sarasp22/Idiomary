@@ -1,0 +1,46 @@
+it:
+  site:
+    title: "Idiomary"
+    tagline: "Scopri il significato dei modi di dire in qualsiasi lingua"
+  nav:
+    my_dictionary: "Il Mio Dizionario"
+    logout: "Esci"
+    login: "Accedi"
+    sign_up: "Registrati"
+  home:
+    start_searching: "Inizia la Ricerca"
+    search_idioms: "🔍 Cerca Modi di Dire"
+    search_desc: "Trova il significato di qualsiasi modo di dire"
+    multiple_languages: "🌍 Più Lingue"
+    languages_desc: "Inglese, italiano, francese, spagnolo e portoghese"
+    your_dictionary: "📚 Il Tuo Dizionario"
+    view_saved: "Visualizza i tuoi modi di dire salvati"
+    save_favorites: "💾 Salva i Preferiti"
+    signup_to_save: "per salvare i modi di dire"
+  search:
+    title: "Cerca un Modo di Dire"
+    enter_idiom: "Inserisci il modo di dire:"
+    placeholder: "es., break the ice"
+    from: "Da:"
+    to: "A:"
+    translate_button: "Traduci"
+  result:
+    from: "Da"
+    to: "a"
+    literal: "Letterale"
+    equivalent: "Equivalente"
+    meaning: "Significato"
+    example: "Esempio"
+    search_again: "← Cerca di Nuovo"
+    save_to_dictionary: "💾 Salva nel Dizionario"
+    signup_prompt: "per salvare questo modo di dire"
+  dictionary:
+    title: "📚 Il Mio Dizionario"
+    empty_state: "Il tuo dizionario è vuoto."
+    start_searching: "Inizia a cercare"
+    for_idioms: "modi di dire!"
+    remove: "🗑️ Rimuovi"
+    confirm_delete: "Sei sicuro?"
+  notices:
+    saved: "Modo di dire salvato nel tuo dizionario!"
+    removed: "Modo di dire rimosso dal tuo dizionario"

@@ -1,5 +1,5 @@
 <div class="container">
-  <h1>📚 My Dictionary</h1>
+  <h1><%= t('dictionary.title') %></h1>
 
   <% if @saved_translations.any? %>
     <div class="translations-list">
@@ -11,12 +11,12 @@
             <%= simple_format(translation.ai_response) %>
           </div>
           <div class="item-actions">
-            <%= button_to "🗑️ Remove", delete_translation_path(translation), method: :delete, class: "btn btn-small btn-danger", data: { confirm: "Are you sure?" } %>
+            <%= button_to t('dictionary.remove'), delete_translation_path(translation), method: :delete, class: "btn btn-small btn-danger", data: { confirm: t('dictionary.confirm_delete') } %>
           </div>
         </div>
       <% end %>
     </div>
   <% else %>
-    <p class="empty-state">Your dictionary is empty. <%= link_to "Start searching", search_path %> for idioms!</p>
+    <p class="empty-state"><%= t('dictionary.empty_state') %> <%= link_to t('dictionary.start_searching'), search_path %> <%= t('dictionary.for_idioms') %></p>
   <% end %>
 </div>
