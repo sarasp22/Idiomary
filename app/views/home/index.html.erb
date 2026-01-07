@@ -1,10 +1,32 @@
 <div class="container">
-  <h1>Idiomary</h1>
-  <p>Scopri il significato dei modi di dire</p>
+  <div class="hero">
+    <h1>Idiomary</h1>
+    <p class="tagline">Discover the meaning of idioms in any language</p>
 
-  <% if user_signed_in? %>
-    <p>Bentornato <%= current_user.email %>!</p>
-  <% else %>
-    <p>Registrati per salvare i tuoi modi di dire preferiti</p>
-  <% end %>
+    <%= link_to "Start Searching", search_path, class: "btn btn-primary" %>
+  </div>
+
+  <div class="features">
+    <div class="feature">
+      <h3>🔍 Search Idioms</h3>
+      <p>Find the meaning of any idiom</p>
+    </div>
+
+    <div class="feature">
+      <h3>🌍 Multiple Languages</h3>
+      <p>English, Italian, and French</p>
+    </div>
+
+    <% if user_signed_in? %>
+      <div class="feature">
+        <h3>📚 Your Dictionary</h3>
+        <p><%= link_to "View your saved idioms", my_dictionary_path %></p>
+      </div>
+    <% else %>
+      <div class="feature">
+        <h3>💾 Save Favorites</h3>
+        <p><%= link_to "Sign up", new_user_registration_path %> to save idioms</p>
+      </div>
+    <% end %>
+  </div>
 </div>

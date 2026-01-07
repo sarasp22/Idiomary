@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="result-card">
+    <h2>📖 <%= @idiom %></h2>
+    <p class="language-info">From <%= @source_lang.upcase %> to <%= @target_lang.upcase %></p>
+
+    <div class="translation-result">
+      <%= simple_format(@result) %>
+    </div>
+
+    <div class="actions">
+      <%= link_to "← Search Again", search_path, class: "btn btn-secondary" %>
+
+      <% if user_signed_in? %>
+        <%= button_to "💾 Save to Dictionary", save_translation_path, method: :post, params: {
+          original_idiom: @idiom,
+          source_language: @source_lang,
+          target_language: @target_lang,
+          ai_response: @result
+        }, class: "btn btn-primary" %>
+      <% else %>
+        <p class="login-prompt">
+          <%= link_to "Sign up", new_user_registration_path %> to save this idiom
+        </p>
+      <% end %>
+    </div>
+  </div>
+</div>

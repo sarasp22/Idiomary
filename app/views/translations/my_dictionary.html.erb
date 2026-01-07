@@ -1,0 +1,22 @@
+<div class="container">
+  <h1>📚 My Dictionary</h1>
+
+  <% if @saved_translations.any? %>
+    <div class="translations-list">
+      <% @saved_translations.each do |translation| %>
+        <div class="translation-item">
+          <h3><%= translation.original_idiom %></h3>
+          <p class="language-badge"><%= translation.source_language.upcase %> → <%= translation.target_language.upcase %></p>
+          <div class="translation-content">
+            <%= simple_format(translation.ai_response) %>
+          </div>
+          <div class="item-actions">
+            <%= button_to "🗑️ Remove", delete_translation_path(translation), method: :delete, class: "btn btn-small btn-danger", data: { confirm: "Are you sure?" } %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <p class="empty-state">Your dictionary is empty. <%= link_to "Start searching", search_path %> for idioms!</p>
+  <% end %>
+</div>
