@@ -25,6 +25,13 @@ it:
     from: "Da:"
     to: "A:"
     translate_button: "Traduci"
+  nav:
+    saved: "Salvati"
+    home: "Home"
+    settings: "Impostazioni"
+    logout: "Esci"
+    login: "Accedi"
+    sign_up: "Registrati"
   result:
     from: "Da"
     to: "a"

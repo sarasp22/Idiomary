@@ -25,6 +25,13 @@ fr:
     from: "De :"
     to: "À :"
     translate_button: "Traduire"
+  nav:
+    saved: "Enregistrés"
+    home: "Accueil"
+    settings: "Paramètres"
+    logout: "Déconnexion"
+    login: "Connexion"
+    sign_up: "S'inscrire"
   result:
     from: "De"
     to: "à"

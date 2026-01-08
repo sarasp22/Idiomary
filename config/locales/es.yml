@@ -25,6 +25,13 @@ es:
     from: "De:"
     to: "A:"
     translate_button: "Traducir"
+  nav:
+    saved: "Guardados"
+    home: "Inicio"
+    settings: "Ajustes"
+    logout: "Cerrar sesión"
+    login: "Iniciar sesión"
+    sign_up: "Registrarse"
   result:
     from: "De"
     to: "a"

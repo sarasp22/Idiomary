@@ -1,19 +1,32 @@
 <div class="home-container">
   <div class="search-header-section">
-    <div class="search-top-bar">
-      <div class="user-dropdown">
-        <div class="user-action-btn" onclick="document.getElementById('user-menu').classList.toggle('show')">
-          <i class="fa-solid fa-user"></i>
-        </div>
-        <div id="user-menu" class="dropdown-content">
-          <% if user_signed_in? %>
-            <p class="user-email"><%= current_user.email %></p>
-            <%= button_to t('nav.logout'), destroy_user_session_path, method: :delete %>
-          <% else %>
-            <%= link_to t('nav.login'), new_user_session_path %>
-            <%= link_to t('nav.sign_up'), new_user_registration_path %>
-          <% end %>
-        </div>
+    <div class="language-dropdown">
+      <div class="flag-indicator" onclick="document.getElementById('lang-menu').classList.toggle('show')">
+        <%= I18n.locale == :en ? "🇬🇧" : (I18n.locale == :it ? "🇮🇹" : (I18n.locale == :fr ? "🇫🇷" : (I18n.locale == :es ? "🇪🇸" : "🇵🇹"))) %>
+        <span class="arrow-down">▼</span>
+      </div>
+
+      <div id="lang-menu" class="dropdown-content">
+        <%= link_to "🇬🇧 English", url_for(locale: :en) unless I18n.locale == :en %>
+        <%= link_to "🇮🇹 Italiano", url_for(locale: :it) unless I18n.locale == :it %>
+        <%= link_to "🇫🇷 Français", url_for(locale: :fr) unless I18n.locale == :fr %>
+        <%= link_to "🇪🇸 Español", url_for(locale: :es) unless I18n.locale == :es %>
+        <%= link_to "🇵🇹 Português", url_for(locale: :pt) unless I18n.locale == :pt %>
+      </div>
+    </div>
+
+    <div class="user-dropdown">
+      <div class="user-action-btn" onclick="document.getElementById('user-menu').classList.toggle('show')">
+        <i class="fa-solid fa-user"></i>
+      </div>
+      <div id="user-menu" class="dropdown-content dropdown-user">
+        <% if user_signed_in? %>
+          <p class="user-email"><%= current_user.email %></p>
+          <%= button_to t('nav.logout'), destroy_user_session_path, method: :delete %>
+        <% else %>
+          <%= link_to t('nav.login'), new_user_session_path %>
+          <%= link_to t('nav.sign_up'), new_user_registration_path %>
+        <% end %>
       </div>
     </div>
 
@@ -26,15 +39,15 @@
     <div class="search-main-nav">
       <%= link_to my_dictionary_path, class: "nav-item" do %>
         <i class="fa-regular fa-bookmark"></i>
-        <span>Saved</span>
+        <span><%= t('nav.saved', default: 'Saved') %></span>
       <% end %>
-      <%= link_to root_path, class: "nav-item active" do %>
+      <%= link_to search_path, class: "nav-item active" do %>
         <i class="fa-solid fa-house"></i>
-        <span>Home</span>
+        <span><%= t('nav.home', default: 'Home') %></span>
       <% end %>
       <a href="#" class="nav-item">
         <i class="fa-solid fa-gear"></i>
-        <span>Settings</span>
+        <span><%= t('nav.settings', default: 'Settings') %></span>
       </a>
     </div>
   </div>
@@ -44,69 +57,78 @@
 
       <%= form_with url: search_path, method: :post, data: { turbo: false }, class: "search-box-container" do |f| %>
         <div class="search-input-wrapper">
-          <%= f.text_field :idiom, placeholder: "Cerca un modo di dire...", class: "search-input-field", value: @idiom %>
+          <%= f.text_field :idiom, placeholder: t('search.placeholder', default: 'Cerca un modo di dire...'), class: "search-input-field", value: @idiom %>
           <button type="submit" class="search-icon-submit">
             <i class="fa-solid fa-magnifying-glass"></i>
           </button>
         </div>
 
-<div class="language-selector-row">
-  <div class="lang-pill">
-    <span class="flag-mini" id="flag-source">
-      <%= @source_lang == 'en' ? "🇬🇧" : (@source_lang == 'fr' ? "🇫🇷" : (@source_lang == 'es' ? "🇪🇸" : (@source_lang == 'pt' ? "🇵🇹" : "🇮🇹"))) %>
-    </span>
-    <%= f.select :source_lang, [['Italiano', 'it'], ['English', 'en'], ['Français', 'fr'], ['Spanish', 'es'], ['Portuguese', 'pt']],
-        { selected: @source_lang },
-        { onchange: "updateFlag(this, 'source')" } %>
-  </div>
+        <div class="language-selector-row">
+          <div class="lang-pill">
+            <span class="flag-mini" id="flag-source">
+              <%= @source_lang == 'en' ? "🇬🇧" : (@source_lang == 'fr' ? "🇫🇷" : (@source_lang == 'es' ? "🇪🇸" : (@source_lang == 'pt' ? "🇵🇹" : "🇮🇹"))) %>
+            </span>
+            <%= f.select :source_lang, [
+              ['Italiano', 'it'],
+              ['English', 'en'],
+              ['Français', 'fr'],
+              ['Español', 'es'],
+              ['Português', 'pt']
+            ], { selected: @source_lang }, { onchange: "updateFlag(this, 'source')" } %>
+          </div>
 
-  <i class="fa-solid fa-arrow-right"></i>
+          <i class="fa-solid fa-arrow-right"></i>
 
-  <div class="lang-pill">
-    <span class="flag-mini" id="flag-target">
-      <%= @target_lang == 'en' ? "🇬🇧" : (@target_lang == 'it' ? "🇮🇹" : (@target_lang == 'es' ? "🇪🇸" : (@target_lang == 'pt' ? "🇵🇹" : "🇫🇷"))) %>
-    </span>
-    <%= f.select :target_lang, [['Français', 'fr'], ['Italiano', 'it'], ['English', 'en'], ['Spanish', 'es'], ['Portuguese', 'pt']],
-        { selected: @target_lang },
-        { onchange: "updateFlag(this, 'target')" } %>
-  </div>
-</div>
+          <div class="lang-pill">
+            <span class="flag-mini" id="flag-target">
+              <%= @target_lang == 'en' ? "🇬🇧" : (@target_lang == 'it' ? "🇮🇹" : (@target_lang == 'es' ? "🇪🇸" : (@target_lang == 'pt' ? "🇵🇹" : "🇫🇷"))) %>
+            </span>
+            <%= f.select :target_lang, [
+              ['Français', 'fr'],
+              ['Italiano', 'it'],
+              ['English', 'en'],
+              ['Español', 'es'],
+              ['Português', 'pt']
+            ], { selected: @target_lang }, { onchange: "updateFlag(this, 'target')" } %>
+          </div>
+        </div>
 
-        <%= f.submit "translate", class: "btn-translate-blue" %>
+        <%= f.submit t('search.translate_button', default: 'Translate'), class: "btn-translate-blue" %>
       <% end %>
 
-<% if @result.present? %>
-  <div class="result-display-card">
-    <h2 class="result-title">“<%= @idiom %>”</h2>
+      <% if @result.present? %>
+        <div class="result-display-card">
+          <h2 class="result-title">"<%= @idiom %>"</h2>
 
-    <div class="result-content">
-      <%= simple_format(@result) %>
-    </div>
+          <div class="result-content">
+            <%= simple_format(@result) %>
+          </div>
 
-    <div class="result-actions">
-      <% if user_signed_in? %>
-        <%= button_to save_translation_path, method: :post, params: {
-          original_idiom: @idiom,
-          source_language: @source_lang,
-          target_language: @target_lang,
-          ai_response: @result
-        }, class: "btn-save-green" do %>
-          <i class="fa-solid fa-bookmark" style="margin-right: 8px;"></i> Salva scheda
-        <% end %>
-      <% else %>
-        <div class="login-invitation">
-          <p><%= t('result.signup_prompt_text', default: "Vuoi salvare questo modo di dire?") %></p>
-          <%= link_to new_user_registration_path, class: "btn-save-green btn-signup-alt" do %>
-             Registrati per salvare
-          <% end %>
-          <p class="small-login-link">
-            Hai già un account? <%= link_to "Accedi", new_user_session_path %>
-          </p>
+          <div class="result-actions">
+            <% if user_signed_in? %>
+              <%= button_to save_translation_path, method: :post, params: {
+                original_idiom: @idiom,
+                source_language: @source_lang,
+                target_language: @target_lang,
+                ai_response: @result
+              }, class: "btn-save-green" do %>
+                <i class="fa-solid fa-bookmark"></i> <%= t('result.save_card', default: 'Salva scheda') %>
+              <% end %>
+            <% else %>
+              <div class="login-invitation">
+                <p><%= t('result.want_to_save', default: 'Vuoi salvare questo modo di dire?') %></p>
+                <%= link_to new_user_registration_path, class: "btn-save-green btn-signup-alt" do %>
+                  <%= t('result.signup_to_save_button', default: 'Registrati per salvare') %>
+                <% end %>
+                <p class="small-login-link">
+                  <%= t('result.already_have_account', default: 'Hai già un account?') %>
+                  <%= link_to t('nav.login'), new_user_session_path %>
+                </p>
+              </div>
+            <% end %>
+          </div>
         </div>
       <% end %>
-    </div>
-  </div>
-<% end %>
 
     </div>
   </div>
@@ -137,4 +159,20 @@
     if (sourceSelect) updateFlag(sourceSelect, 'source');
     if (targetSelect) updateFlag(targetSelect, 'target');
   });
+
+  window.onclick = function(event) {
+  if (!event.target.closest('.language-dropdown')) {
+    var langMenus = document.querySelectorAll('.language-dropdown .dropdown-content');
+    langMenus.forEach(function(menu) {
+      menu.classList.remove('show');
+    });
+  }
+
+  if (!event.target.closest('.user-dropdown')) {
+    var userMenus = document.querySelectorAll('.user-dropdown .dropdown-content');
+    userMenus.forEach(function(menu) {
+      menu.classList.remove('show');
+    });
+  }
+}
 </script>

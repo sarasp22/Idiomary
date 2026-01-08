@@ -25,6 +25,13 @@ en:
     from: "From:"
     to: "To:"
     translate_button: "Translate"
+  nav:
+    saved: "Saved"
+    home: "Home"
+    settings: "Settings"
+    logout: "Logout"
+    login: "Login"
+    sign_up: "Sign-up"
   result:
     from: "From"
     to: "to"

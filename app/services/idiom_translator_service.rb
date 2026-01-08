@@ -53,16 +53,35 @@ class IdiomTranslatorService
       'pt' => 'Portuguese'
     }
 
+    labels = get_labels(interface_lang)
+
     <<~PROMPT
       Idiom: "#{idiom}" (#{lang_names[source_lang]} → #{lang_names[target_lang]})
 
-      Respond in #{lang_names[interface_lang]} with this format:
-      • Literal: [translation in #{lang_names[target_lang]}]
-      • Equivalent: [idiom in #{lang_names[target_lang]} or "none"]
-      • Meaning: [brief explanation]
-      • Example: [one short sentence in #{lang_names[target_lang]}]
+      Respond ONLY in #{lang_names[interface_lang]} using this EXACT format:
 
-      Be concise.
+      #{labels[:literal]}: [literal translation of the idiom in #{lang_names[target_lang]}]
+      #{labels[:equivalent]}: [equivalent idiom in #{lang_names[target_lang]}, or write "#{labels[:none]}"]
+      #{labels[:meaning]}: [brief explanation of what the idiom means]
+      #{labels[:example]}: [one short example sentence in #{lang_names[target_lang]}]
+
+      IMPORTANT:
+      - Use the labels exactly as shown above (#{labels[:literal]}, #{labels[:equivalent]}, #{labels[:meaning]}, #{labels[:example]})
+      - The literal translation and equivalent must be in #{lang_names[target_lang]}
+      - The explanation and all other text must be in #{lang_names[interface_lang]}
+      - Keep it concise
     PROMPT
+  end
+
+  def get_labels(lang)
+    labels_map = {
+      'en' => { literal: 'Literal', equivalent: 'Equivalent', meaning: 'Meaning', example: 'Example', none: 'none' },
+      'it' => { literal: 'Letterale', equivalent: 'Equivalente', meaning: 'Significato', example: 'Esempio', none: 'nessuno' },
+      'fr' => { literal: 'Littéral', equivalent: 'Équivalent', meaning: 'Signification', example: 'Exemple', none: 'aucun' },
+      'es' => { literal: 'Literal', equivalent: 'Equivalente', meaning: 'Significado', example: 'Ejemplo', none: 'ninguno' },
+      'pt' => { literal: 'Literal', equivalent: 'Equivalente', meaning: 'Significado', example: 'Exemplo', none: 'nenhum' }
+    }
+
+    labels_map[lang] || labels_map['en']
   end
 end

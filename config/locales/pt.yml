@@ -25,6 +25,13 @@ pt:
     from: "De:"
     to: "Para:"
     translate_button: "Traduzir"
+  nav:
+    saved: "Salvos"
+    home: "Início"
+    settings: "Configurações"
+    logout: "Sair"
+    login: "Entrar"
+    sign_up: "Cadastrar-se"
   result:
     from: "De"
     to: "para"
