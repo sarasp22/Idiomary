@@ -43,12 +43,11 @@ it:
     save_to_dictionary: "💾 Salva nel Dizionario"
     signup_prompt: "per salvare questo modo di dire"
   dictionary:
-    title: "📚 Il Mio Dizionario"
+    saved_cards: "Schede Salvate:"
     empty_state: "Il tuo dizionario è vuoto."
     start_searching: "Inizia a cercare"
     for_idioms: "modi di dire!"
-    remove: "🗑️ Rimuovi"
-    confirm_delete: "Sei sicuro?"
+    confirm_delete: "Sei sicuro di voler eliminare questa scheda?"
   notices:
     saved: "Modo di dire salvato nel tuo dizionario!"
     removed: "Modo di dire rimosso dal tuo dizionario"

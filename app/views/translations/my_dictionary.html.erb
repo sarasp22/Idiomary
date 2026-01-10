@@ -1,50 +1,137 @@
-<div class="container">
-    <header>
-      <nav>
-        <div class="nav-left">
-          <%= link_to t('site.title'), root_path, class: "logo" %>
-        </div>
+<div class="home-container">
+  <div class="search-header-section">
+    <div class="language-dropdown">
+      <div class="flag-indicator" onclick="document.getElementById('lang-menu').classList.toggle('show')">
+        <%= I18n.locale == :en ? "🇬🇧" : (I18n.locale == :it ? "🇮🇹" : (I18n.locale == :fr ? "🇫🇷" : (I18n.locale == :es ? "🇪🇸" : "🇵🇹"))) %>
+        <span class="arrow-down">▼</span>
+      </div>
 
-        <div class="nav-center">
-          <div class="language-selector">
-            <%= link_to "🇬🇧 EN", url_for(locale: :en), class: I18n.locale == :en ? 'active' : '' %>
-            <%= link_to "🇮🇹 IT", url_for(locale: :it), class: I18n.locale == :it ? 'active' : '' %>
-            <%= link_to "🇫🇷 FR", url_for(locale: :fr), class: I18n.locale == :fr ? 'active' : '' %>
-            <%= link_to "🇪🇸 ES", url_for(locale: :es), class: I18n.locale == :es ? 'active' : '' %>
-            <%= link_to "🇵🇹 PT", url_for(locale: :pt), class: I18n.locale == :pt ? 'active' : '' %>
-          </div>
-        </div>
+      <div id="lang-menu" class="dropdown-content">
+        <%= link_to "🇬🇧 English", url_for(locale: :en) unless I18n.locale == :en %>
+        <%= link_to "🇮🇹 Italiano", url_for(locale: :it) unless I18n.locale == :it %>
+        <%= link_to "🇫🇷 Français", url_for(locale: :fr) unless I18n.locale == :fr %>
+        <%= link_to "🇪🇸 Español", url_for(locale: :es) unless I18n.locale == :es %>
+        <%= link_to "🇵🇹 Português", url_for(locale: :pt) unless I18n.locale == :pt %>
+      </div>
+    </div>
 
-        <div class="nav-right">
-          <% if user_signed_in? %>
-            <p>Hello <%= current_user.email %></p>
-            <%= link_to t('nav.my_dictionary'), my_dictionary_path %>
-            <%= button_to t('nav.logout'), destroy_user_session_path, method: :delete %>
-          <% else %>
-            <%= link_to t('nav.login'), new_user_session_path %>
-            <%= link_to t('nav.sign_up'), new_user_registration_path %>
+    <div class="user-dropdown">
+      <div class="user-action-btn" onclick="document.getElementById('user-menu').classList.toggle('show')">
+        <i class="fa-solid fa-user"></i>
+      </div>
+      <div id="user-menu" class="dropdown-content dropdown-user">
+        <% if user_signed_in? %>
+          <p class="user-email"><%= current_user.email %></p>
+          <%= button_to t('nav.logout'), destroy_user_session_path, method: :delete %>
+        <% else %>
+          <%= link_to t('nav.login'), new_user_session_path %>
+          <%= link_to t('nav.sign_up'), new_user_registration_path %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="search-logo-container">
+      <%= link_to root_path do %>
+        <%= image_tag "logo.png", alt: "idiomary logo", class: "search-logo-small" %>
+      <% end %>
+    </div>
+
+    <div class="search-main-nav">
+      <%= link_to my_dictionary_path, class: "nav-item active" do %>
+        <i class="fa-solid fa-bookmark"></i>
+        <span><%= t('nav.saved', default: 'Saved') %></span>
+      <% end %>
+      <%= link_to search_path, class: "nav-item" do %>
+        <i class="fa-solid fa-house"></i>
+        <span><%= t('nav.home', default: 'Home') %></span>
+      <% end %>
+      <a href="#" class="nav-item">
+        <i class="fa-solid fa-gear"></i>
+        <span><%= t('nav.settings', default: 'Settings') %></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="dictionary-content-section">
+    <div class="dictionary-container">
+      <h1 class="dictionary-title"><%= t('dictionary.saved_cards', default: 'Schede Salvate:') %></h1>
+
+      <% if @saved_translations.any? %>
+        <div class="dictionary-grid">
+          <% @saved_translations.each do |translation| %>
+            <div class="dictionary-card">
+              <div class="card-header-row">
+                <h3 class="card-idiom-title">"<%= translation.original_idiom %>"</h3>
+                <%= button_to delete_translation_path(translation),
+                    method: :delete,
+                    class: "btn-delete-x",
+                    data: { confirm: t('dictionary.confirm_delete') },
+                    form: { style: 'display: inline;' } do %>
+                  <i class="fa-solid fa-xmark"></i>
+                <% end %>
+              </div>
+
+              <div class="card-language-flags">
+                <span class="flag-badge">
+                  <%= case translation.source_language
+                      when 'en' then '🇬🇧'
+                      when 'it' then '🇮🇹'
+                      when 'fr' then '🇫🇷'
+                      when 'es' then '🇪🇸'
+                      when 'pt' then '🇵🇹'
+                      end %>
+                </span>
+                <i class="fa-solid fa-arrow-right arrow-small"></i>
+                <span class="flag-badge">
+                  <%= case translation.target_language
+                      when 'en' then '🇬🇧'
+                      when 'it' then '🇮🇹'
+                      when 'fr' then '🇫🇷'
+                      when 'es' then '🇪🇸'
+                      when 'pt' then '🇵🇹'
+                      end %>
+                </span>
+              </div>
+
+              <div class="card-collapsible-content" id="content-<%= translation.id %>">
+                <div class="card-text-content">
+                  <%= simple_format(translation.ai_response) %>
+                </div>
+              </div>
+
+              <button class="btn-toggle-content" onclick="toggleCard(<%= translation.id %>)">
+                <i class="fa-solid fa-chevron-down" id="icon-<%= translation.id %>"></i>
+              </button>
+            </div>
           <% end %>
         </div>
-      </nav>
-    </header>
-  <h1><%= t('dictionary.title') %></h1>
-
-  <% if @saved_translations.any? %>
-    <div class="translations-list">
-      <% @saved_translations.each do |translation| %>
-        <div class="translation-item">
-          <h3><%= translation.original_idiom %></h3>
-          <p class="language-badge"><%= translation.source_language.upcase %> → <%= translation.target_language.upcase %></p>
-          <div class="translation-content">
-            <%= simple_format(translation.ai_response) %>
-          </div>
-          <div class="item-actions">
-            <%= button_to t('dictionary.remove'), delete_translation_path(translation), method: :delete, class: "btn btn-small btn-danger", data: { confirm: t('dictionary.confirm_delete') } %>
-          </div>
+      <% else %>
+        <div class="empty-dictionary-state">
+          <i class="fa-regular fa-bookmark empty-icon"></i>
+          <p class="empty-text"><%= t('dictionary.empty_state', default: 'Il tuo dizionario è vuoto.') %></p>
+          <p class="empty-subtext">
+            <%= link_to t('dictionary.start_searching', default: 'Inizia a cercare'), search_path, class: "link-primary" %>
+            <%= t('dictionary.for_idioms', default: 'modi di dire!') %>
+          </p>
         </div>
       <% end %>
     </div>
-  <% else %>
-    <p class="empty-state"><%= t('dictionary.empty_state') %> <%= link_to t('dictionary.start_searching'), search_path %> <%= t('dictionary.for_idioms') %></p>
-  <% end %>
+  </div>
 </div>
+
+<script>
+  function toggleCard(id) {
+    const content = document.getElementById('content-' + id);
+    const icon = document.getElementById('icon-' + id);
+
+    if (content.classList.contains('expanded')) {
+      content.classList.remove('expanded');
+      icon.classList.remove('fa-chevron-up');
+      icon.classList.add('fa-chevron-down');
+    } else {
+      content.classList.add('expanded');
+      icon.classList.remove('fa-chevron-down');
+      icon.classList.add('fa-chevron-up');
+    }
+  }
+</script>

@@ -43,12 +43,11 @@ es:
     save_to_dictionary: "💾 Guardar en Diccionario"
     signup_prompt: "para guardar este modismo"
   dictionary:
-    title: "📚 Mi Diccionario"
+    saved_cards: "Tarjetas Guardadas:"
     empty_state: "Tu diccionario está vacío."
     start_searching: "Comenzar a buscar"
     for_idioms: "modismos!"
-    remove: "🗑️ Eliminar"
-    confirm_delete: "¿Estás seguro?"
+    confirm_delete: "¿Estás seguro de que quieres eliminar esta tarjeta?"
   notices:
     saved: "¡Modismo guardado en tu diccionario!"
     removed: "Modismo eliminado de tu diccionario"

@@ -1,0 +1,219 @@
+.dictionary-content-section {
+  background: white;
+  min-height: calc(100vh - 250px);
+  padding: 40px 20px 80px 20px;
+}
+
+.dictionary-container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.dictionary-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 30px;
+  text-align: left;
+}
+
+.dictionary-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+@media (min-width: 768px) {
+  .dictionary-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .dictionary-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+}
+
+.dictionary-card {
+  background: white;
+  border: 1px solid #e9ecef;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  transition: all 0.2s;
+  position: relative;
+}
+
+.dictionary-card:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  transform: translateY(-2px);
+}
+
+.card-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+  gap: 12px;
+}
+
+.card-idiom-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+  flex: 1;
+  line-height: 1.4;
+}
+
+.btn-delete-x {
+  background: transparent;
+  border: none;
+  color: #999;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 0;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.btn-delete-x:hover {
+  background: #fee;
+  color: #dc3545;
+}
+
+.card-language-flags {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.flag-badge {
+  font-size: 20px;
+  line-height: 1;
+}
+
+.arrow-small {
+  color: #ccc;
+  font-size: 12px;
+}
+
+.card-collapsible-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.card-collapsible-content.expanded {
+  max-height: 1000px;
+}
+
+.card-text-content {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #555;
+  padding: 8px 0;
+}
+
+.card-text-content p {
+  margin-bottom: 10px;
+}
+
+.btn-toggle-content {
+  background: transparent;
+  border: none;
+  color: #999;
+  font-size: 16px;
+  cursor: pointer;
+  width: 100%;
+  padding: 10px 0;
+  margin-top: 8px;
+  border-top: 1px solid #f0f0f0;
+  transition: color 0.2s;
+}
+
+.btn-toggle-content:hover {
+  color: #666;
+}
+
+.btn-toggle-content i {
+  transition: transform 0.3s;
+}
+
+.empty-dictionary-state {
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.empty-icon {
+  font-size: 64px;
+  color: #ddd;
+  margin-bottom: 24px;
+}
+
+.empty-text {
+  font-size: 18px;
+  color: #666;
+  margin-bottom: 12px;
+  font-weight: 500;
+}
+
+.empty-subtext {
+  font-size: 14px;
+  color: #888;
+}
+
+.link-primary {
+  color: var(--button-primary, #48d1ac);
+  font-weight: 600;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.link-primary:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}
+
+@media (min-width: 1024px) {
+  .dictionary-content-section {
+    padding: 60px 40px 100px 40px;
+  }
+
+  .dictionary-title {
+    font-size: 28px;
+    margin-bottom: 40px;
+  }
+
+  .card-idiom-title {
+    font-size: 18px;
+  }
+
+  .card-text-content {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 767px) {
+  .dictionary-card {
+    padding: 16px;
+  }
+
+  .card-idiom-title {
+    font-size: 15px;
+  }
+
+  .card-text-content {
+    font-size: 13px;
+  }
+}

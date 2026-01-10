@@ -43,12 +43,11 @@ pt:
     save_to_dictionary: "💾 Salvar no Dicionário"
     signup_prompt: "para salvar esta expressão"
   dictionary:
-    title: "📚 Meu Dicionário"
+    saved_cards: "Cartões Salvos:"
     empty_state: "Seu dicionário está vazio."
-    start_searching: "Começar a buscar"
+    start_searching: "Começar a pesquisar"
     for_idioms: "expressões!"
-    remove: "🗑️ Remover"
-    confirm_delete: "Tem certeza?"
+    confirm_delete: "Tem certeza de que deseja excluir este cartão?"
   notices:
     saved: "Expressão salva no seu dicionário!"
     removed: "Expressão removida do seu dicionário"

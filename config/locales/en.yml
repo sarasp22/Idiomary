@@ -43,12 +43,11 @@ en:
     save_to_dictionary: "💾 Save to Dictionary"
     signup_prompt: "to save this idiom"
   dictionary:
-    title: "📚 My Dictionary"
+    saved_cards: "Saved Cards:"
     empty_state: "Your dictionary is empty."
     start_searching: "Start searching"
     for_idioms: "for idioms!"
-    remove: "🗑️ Remove"
-    confirm_delete: "Are you sure?"
+    confirm_delete: "Are you sure you want to delete this card?"
   notices:
     saved: "Idiom saved to your dictionary!"
     removed: "Idiom removed from your dictionary"
