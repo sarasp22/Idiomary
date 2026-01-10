@@ -1,25 +1,55 @@
-<h2>Change your password</h2>
+<div class="auth-page-container">
+  <div class="auth-language-dropdown">
+    <div class="flag-indicator" onclick="document.getElementById('auth-lang-menu').classList.toggle('show')">
+      <%= I18n.locale == :en ? "🇬🇧" : (I18n.locale == :it ? "🇮🇹" : (I18n.locale == :fr ? "🇫🇷" : (I18n.locale == :es ? "🇪🇸" : "🇵🇹"))) %>
+      <span class="arrow-down">▼</span>
+    </div>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-  <%= f.hidden_field :reset_password_token %>
-
-  <div class="field">
-    <%= f.label :password, "New password" %><br />
-    <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em><br />
-    <% end %>
-    <%= f.password_field :password, autofocus: true, autocomplete: "new-password" %>
+    <div id="auth-lang-menu" class="dropdown-content">
+      <%= link_to "🇬🇧 English", url_for(locale: :en) unless I18n.locale == :en %>
+      <%= link_to "🇮🇹 Italiano", url_for(locale: :it) unless I18n.locale == :it %>
+      <%= link_to "🇫🇷 Français", url_for(locale: :fr) unless I18n.locale == :fr %>
+      <%= link_to "🇪🇸 Español", url_for(locale: :es) unless I18n.locale == :es %>
+      <%= link_to "🇵🇹 Português", url_for(locale: :pt) unless I18n.locale == :pt %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation, "Confirm new password" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+  <div class="auth-content-wrapper">
+    <div class="auth-logo-section">
+      <%= link_to root_path do %>
+        <%= image_tag "logo.png", alt: "idiomary logo", class: "auth-logo" %>
+      <% end %>
+    </div>
 
-  <div class="actions">
-    <%= f.submit "Change my password" %>
-  </div>
-<% end %>
+    <div class="auth-card">
+      <h2 class="auth-title"><%= t('devise.passwords.edit.title', default: 'Change your password') %></h2>
+      <p class="auth-subtitle"><%= t('devise.passwords.edit.subtitle', default: 'Enter your new password below.') %></p>
 
-<%= render "devise/shared/links" %>
+      <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put, class: 'auth-form' }) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+        <%= f.hidden_field :reset_password_token %>
+
+        <div class="auth-field">
+          <%= f.label :password, t('devise.passwords.edit.new_password', default: 'New password'), class: 'auth-label' %>
+          <% if @minimum_password_length %>
+            <span class="password-hint">(<%= @minimum_password_length %> characters minimum)</span>
+          <% end %>
+          <%= f.password_field :password, autofocus: true, autocomplete: "new-password", class: 'auth-input', placeholder: '••••••••' %>
+        </div>
+
+        <div class="auth-field">
+          <%= f.label :password_confirmation, t('devise.passwords.edit.confirm_password', default: 'Confirm new password'), class: 'auth-label' %>
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'auth-input', placeholder: '••••••••' %>
+        </div>
+
+        <div class="auth-actions">
+          <%= f.submit t('devise.passwords.edit.submit', default: 'Change my password'), class: 'btn-auth-primary' %>
+        </div>
+      <% end %>
+
+      <div class="auth-footer-links">
+        <%= render "devise/shared/links" %>
+      </div>
+    </div>
+  </div>
+</div>

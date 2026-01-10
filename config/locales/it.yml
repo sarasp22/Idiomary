@@ -51,3 +51,27 @@ it:
   notices:
     saved: "Modo di dire salvato nel tuo dizionario!"
     removed: "Modo di dire rimosso dal tuo dizionario"
+
+  devise:
+    sessions:
+      new:
+        sign_in: "Accedi"
+        subtitle: "Bentornato! Inserisci i tuoi dati."
+        remember_me: "Ricordami"
+        forgot_password: "Password dimenticata?"
+    registrations:
+      new:
+        sign_up: "Registrati"
+        subtitle: "Crea il tuo account per iniziare a salvare modi di dire."
+    passwords:
+      new:
+        title: "Password dimenticata?"
+        subtitle: "Inserisci la tua email e ti invieremo un link per reimpostarla."
+        submit: "Invia link di reset"
+    shared:
+      links:
+        have_account: "Hai già un account?"
+        no_account: "Non hai un account?"
+        sign_in: "Accedi"
+        sign_up: "Registrati"
+        forgot_password: "Password dimenticata?"

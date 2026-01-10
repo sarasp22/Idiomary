@@ -1,6 +1,12 @@
 .dictionary-content-section {
-  background: white;
-  min-height: calc(100vh - 250px);
+    background-image:
+    linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+    url('sfondo.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;  min-height: calc(100vh - 250px);
   padding: 40px 20px 80px 20px;
 }
 

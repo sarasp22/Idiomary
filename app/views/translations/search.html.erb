@@ -36,20 +36,23 @@
       <% end %>
     </div>
 
-    <div class="search-main-nav">
-      <%= link_to my_dictionary_path, class: "nav-item" do %>
-        <i class="fa-regular fa-bookmark"></i>
-        <span><%= t('nav.saved', default: 'Saved') %></span>
-      <% end %>
-      <%= link_to search_path, class: "nav-item active" do %>
-        <i class="fa-solid fa-house"></i>
-        <span><%= t('nav.home', default: 'Home') %></span>
-      <% end %>
-      <a href="#" class="nav-item">
-        <i class="fa-solid fa-gear"></i>
-        <span><%= t('nav.settings', default: 'Settings') %></span>
-      </a>
-    </div>
+<div class="search-main-nav">
+  <%= link_to my_dictionary_path, class: "nav-item" do %>
+    <i class="fa-regular fa-bookmark"></i>
+    <span><%= t('nav.saved', default: 'Saved') %></span>
+  <% end %>
+
+  <%= link_to search_path, class: "nav-item active" do %>
+    <i class="fa-solid fa-house"></i>
+    <span><%= t('nav.home', default: 'Home') %></span>
+  <% end %>
+
+  <%= link_to settings_path, class: "nav-item" do %>
+    <i class="fa-solid fa-gear"></i>
+    <span><%= t('nav.settings', default: 'Settings') %></span>
+  <% end %>
+</div>
+
   </div>
 
   <div class="home-map-section search-map-style">

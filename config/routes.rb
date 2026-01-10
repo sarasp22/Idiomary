@@ -6,11 +6,13 @@ Rails.application.routes.draw do
 
     get 'search', to: 'translations#search', as: 'search'
     post 'search', to: 'translations#search'
-
     post 'translations/save', to: 'translations#save', as: 'save_translation'
 
     get 'my_dictionary', to: 'translations#my_dictionary', as: 'my_dictionary'
     delete 'translations/:id', to: 'translations#destroy', as: 'delete_translation'
+
+    get 'settings', to: 'settings#index', as: 'settings'
+    delete 'settings/delete_account', to: 'settings#delete_account', as: 'delete_account'
   end
 
   get "up" => "rails/health#show", as: :rails_health_check

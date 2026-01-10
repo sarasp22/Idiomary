@@ -1,26 +1,70 @@
-<h2>Log in</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+<div class="auth-page-container">
+  <!-- Language Dropdown (come home) -->
+  <div class="auth-language-dropdown">
+    <div class="flag-indicator" onclick="document.getElementById('auth-lang-menu').classList.toggle('show')">
+      <%= I18n.locale == :en ? "🇬🇧" : (I18n.locale == :it ? "🇮🇹" : (I18n.locale == :fr ? "🇫🇷" : (I18n.locale == :es ? "🇪🇸" : "🇵🇹"))) %>
+      <span class="arrow-down">▼</span>
     </div>
-  <% end %>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
+    <div id="auth-lang-menu" class="dropdown-content">
+      <%= link_to "🇬🇧 English", url_for(locale: :en) unless I18n.locale == :en %>
+      <%= link_to "🇮🇹 Italiano", url_for(locale: :it) unless I18n.locale == :it %>
+      <%= link_to "🇫🇷 Français", url_for(locale: :fr) unless I18n.locale == :fr %>
+      <%= link_to "🇪🇸 Español", url_for(locale: :es) unless I18n.locale == :es %>
+      <%= link_to "🇵🇹 Português", url_for(locale: :pt) unless I18n.locale == :pt %>
+    </div>
   </div>
-<% end %>
 
-<%= render "devise/shared/links" %>
+  <div class="auth-content-wrapper">
+    <!-- Logo -->
+    <div class="auth-logo-section">
+      <%= link_to root_path do %>
+        <%= image_tag "logo.png", alt: "idiomary logo", class: "auth-logo" %>
+      <% end %>
+    </div>
+
+    <!-- Auth Card -->
+    <div class="auth-card">
+      <h2 class="auth-title"><%= t('devise.sessions.new.sign_in', default: 'Log in') %></h2>
+      <p class="auth-subtitle"><%= t('devise.sessions.new.subtitle', default: 'Welcome back! Please enter your details.') %></p>
+
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'auth-form' }) do |f| %>
+        <!-- Email Field -->
+        <div class="auth-field">
+          <%= f.label :email, class: 'auth-label' %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'auth-input', placeholder: 'your@email.com' %>
+        </div>
+
+        <!-- Password Field -->
+        <div class="auth-field">
+          <%= f.label :password, class: 'auth-label' %>
+          <%= f.password_field :password, autocomplete: "current-password", class: 'auth-input', placeholder: '••••••••' %>
+        </div>
+
+        <!-- Remember Me & Forgot Password Row -->
+        <div class="auth-options-row">
+          <% if devise_mapping.rememberable? %>
+            <div class="auth-checkbox">
+              <%= f.check_box :remember_me, id: 'remember_me' %>
+              <%= f.label :remember_me, t('devise.sessions.new.remember_me', default: 'Remember me'), for: 'remember_me' %>
+            </div>
+          <% end %>
+
+          <% if devise_mapping.recoverable? %>
+            <%= link_to t('devise.sessions.new.forgot_password', default: 'Forgot password?'), new_password_path(resource_name), class: 'auth-link-small' %>
+          <% end %>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="auth-actions">
+          <%= f.submit t('devise.sessions.new.sign_in', default: 'Log in'), class: 'btn-auth-primary' %>
+        </div>
+      <% end %>
+
+      <!-- Links -->
+      <div class="auth-footer-links">
+        <%= render "devise/shared/links" %>
+      </div>
+    </div>
+  </div>
+</div>

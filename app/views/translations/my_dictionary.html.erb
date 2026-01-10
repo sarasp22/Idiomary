@@ -36,25 +36,28 @@
       <% end %>
     </div>
 
-    <div class="search-main-nav">
-      <%= link_to my_dictionary_path, class: "nav-item active" do %>
-        <i class="fa-solid fa-bookmark"></i>
-        <span><%= t('nav.saved', default: 'Saved') %></span>
-      <% end %>
-      <%= link_to search_path, class: "nav-item" do %>
-        <i class="fa-solid fa-house"></i>
-        <span><%= t('nav.home', default: 'Home') %></span>
-      <% end %>
-      <a href="#" class="nav-item">
-        <i class="fa-solid fa-gear"></i>
-        <span><%= t('nav.settings', default: 'Settings') %></span>
-      </a>
-    </div>
+<div class="search-main-nav">
+  <%= link_to my_dictionary_path, class: "nav-item" do %>
+    <i class="fa-regular fa-bookmark"></i>
+    <span><%= t('nav.saved', default: 'Saved') %></span>
+  <% end %>
+
+  <%= link_to search_path, class: "nav-item active" do %>
+    <i class="fa-solid fa-house"></i>
+    <span><%= t('nav.home', default: 'Home') %></span>
+  <% end %>
+
+  <%= link_to settings_path, class: "nav-item" do %>
+    <i class="fa-solid fa-gear"></i>
+    <span><%= t('nav.settings', default: 'Settings') %></span>
+  <% end %>
+</div>
+
   </div>
 
+      <h1 class="dictionary-title"><%= t('dictionary.saved_cards', default: 'Schede Salvate:') %></h1>
   <div class="dictionary-content-section">
     <div class="dictionary-container">
-      <h1 class="dictionary-title"><%= t('dictionary.saved_cards', default: 'Schede Salvate:') %></h1>
 
       <% if @saved_translations.any? %>
         <div class="dictionary-grid">
@@ -106,7 +109,7 @@
           <% end %>
         </div>
       <% else %>
-        <div class="empty-dictionary-state">
+        <div class="empty-dictionary-state home-actions">
           <i class="fa-regular fa-bookmark empty-icon"></i>
           <p class="empty-text"><%= t('dictionary.empty_state', default: 'Il tuo dizionario è vuoto.') %></p>
           <p class="empty-subtext">

@@ -51,3 +51,27 @@ en:
   notices:
     saved: "Idiom saved to your dictionary!"
     removed: "Idiom removed from your dictionary"
+
+  devise:
+    sessions:
+      new:
+        sign_in: "Log in"
+        subtitle: "Welcome back! Please enter your details."
+        remember_me: "Remember me"
+        forgot_password: "Forgot password?"
+    registrations:
+      new:
+        sign_up: "Sign up"
+        subtitle: "Create your account to start saving idioms."
+    passwords:
+      new:
+        title: "Forgot password?"
+        subtitle: "Enter your email and we'll send you a reset link."
+        submit: "Send reset link"
+    shared:
+      links:
+        have_account: "Already have an account?"
+        no_account: "Don't have an account?"
+        sign_in: "Log in"
+        sign_up: "Sign up"
+        forgot_password: "Forgot your password?"
