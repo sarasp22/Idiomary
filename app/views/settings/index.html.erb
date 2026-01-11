@@ -114,7 +114,12 @@
         </div>
       </div>
 
-
+      <div class="settings-back">
+        <%= link_to search_path, class: "btn-back" do %>
+          <i class="fa-solid fa-arrow-left"></i>
+          <%= t('settings.back_to_app', default: 'Back to App') %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

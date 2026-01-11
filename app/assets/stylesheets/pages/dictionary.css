@@ -26,6 +26,10 @@
   gap: 12px;
 }
 
+.dictionary-title i {
+  color: var(--button-primary);
+}
+
 .dictionary-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -214,6 +218,10 @@
 }
 
 @media (max-width: 767px) {
+  .dictionary-title {
+    font-size: 24px;
+  }
+
   .dictionary-card {
     padding: 16px;
   }

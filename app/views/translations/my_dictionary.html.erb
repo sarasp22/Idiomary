@@ -30,12 +30,6 @@
       </div>
     </div>
 
-    <div class="search-logo-container">
-      <%= link_to root_path do %>
-        <%= image_tag "logo.png", alt: "idiomary logo", class: "search-logo-small" %>
-      <% end %>
-    </div>
-
 <div class="search-main-nav">
   <%= link_to my_dictionary_path, class: "nav-item active" do %>
     <i class="fa-regular fa-bookmark"></i>
@@ -53,11 +47,11 @@
   <% end %>
 </div>
 
-  </div>
 
-      <h1 class="dictionary-title"><%= t('dictionary.saved_cards', default: 'Schede Salvate:') %></h1>
+      <h1 class="dictionary-title"><i class="fa-regular fa-bookmark"></i><%= t('dictionary.saved_cards', default: 'Schede Salvate:') %></h1>
   <div class="dictionary-content-section">
     <div class="dictionary-container">
+  </div>
 
       <% if @saved_translations.any? %>
         <div class="dictionary-grid">
