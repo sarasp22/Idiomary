@@ -1,4 +1,3 @@
-/* Layout Base */
 .container {
   width: 100%;
   max-width: var(--container-mobile);
@@ -9,7 +8,6 @@
   min-height: 100vh;
 }
 
-/* Tablet */
 @media (min-width: 768px) {
   .container {
     max-width: var(--container-tablet);
@@ -19,14 +17,12 @@
   }
 }
 
-/* Desktop */
 @media (min-width: 1024px) {
   .container {
     max-width: var(--container-desktop);
   }
 }
 
-/* Header */
 header {
   position: fixed;
   top: 0;
@@ -49,7 +45,6 @@ header nav {
   padding: 0 var(--space-md);
 }
 
-/* Logo */
 .logo {
   font-size: var(--font-size-xl);
   font-weight: var(--font-weight-bold);
@@ -63,14 +58,12 @@ header nav {
   color: var(--color-accent);
 }
 
-/* Navigation Sections */
 .nav-left, .nav-center, .nav-right {
   display: flex;
   align-items: center;
   gap: var(--space-md);
 }
 
-/* Language Selector */
 .language-selector {
   display: flex;
   gap: var(--space-sm);
@@ -93,7 +86,6 @@ header nav {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
-/* User Icon */
 .user-icon {
   width: 40px;
   height: 40px;
@@ -105,7 +97,6 @@ header nav {
   color: var(--text-secondary);
 }
 
-/* Bottom Navigation */
 .bottom-nav {
   position: fixed;
   bottom: 0;
@@ -146,7 +137,6 @@ header nav {
   height: 24px;
 }
 
-/* Desktop: Hide bottom nav, show different layout */
 @media (min-width: 1024px) {
   .bottom-nav {
     display: none;
@@ -157,7 +147,6 @@ header nav {
   }
 }
 
-/* Notices & Alerts */
 .notice, .alert {
   position: fixed;
   top: calc(var(--header-height) + var(--space-md));
