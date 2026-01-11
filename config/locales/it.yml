@@ -17,7 +17,7 @@ it:
       subtitle: "Inglese, Italiano, Francese, Spagnolo e Portoghese"
     card_2:
       title: "Il Tuo Dizionario"
-      subtitle: "Salva e visualizza i tuoi idiomi preferiti"
+      subtitle: "Salva e visualizza i tuoi modi di dire preferiti"
   search:
     title: "Cerca un Modo di Dire"
     enter_idiom: "Inserisci il modo di dire:"
@@ -41,7 +41,11 @@ it:
     example: "Esempio"
     search_again: "← Cerca di Nuovo"
     save_to_dictionary: "💾 Salva nel Dizionario"
+    save_card: "Salva scheda"
     signup_prompt: "per salvare questo modo di dire"
+    want_to_save: "Vuoi salvare questo modo di dire?"
+    signup_to_save_button: "Registrati per salvare"
+    already_have_account: "Hai già un account?"
   dictionary:
     saved_cards: "Schede Salvate:"
     empty_state: "Il tuo dizionario è vuoto."
@@ -68,6 +72,12 @@ it:
         title: "Password dimenticata?"
         subtitle: "Inserisci la tua email e ti invieremo un link per reimpostarla."
         submit: "Invia link di reset"
+      edit:
+        title: "Cambia la tua password"
+        subtitle: "Inserisci la tua nuova password qui sotto."
+        new_password: "Nuova password"
+        confirm_password: "Conferma nuova password"
+        submit: "Cambia la mia password"
     shared:
       links:
         have_account: "Hai già un account?"
@@ -75,3 +85,24 @@ it:
         sign_in: "Accedi"
         sign_up: "Registrati"
         forgot_password: "Password dimenticata?"
+
+  settings:
+    title: "Impostazioni"
+    account_info: "Informazioni Account"
+    email: "Email"
+    member_since: "Membro da"
+    saved_idioms: "Modi di dire salvati"
+    security: "Sicurezza"
+    change_password: "Cambia Password"
+    change_password_desc: "Aggiorna la tua password per mantenere il tuo account sicuro."
+    change_password_button: "Cambia Password"
+    reset_password: "Reimposta Password"
+    reset_password_desc: "Hai dimenticato la password? Invia un link di reset alla tua email."
+    send_reset_link: "Invia Link di Reset"
+    danger_zone: "Zona Pericolosa"
+    delete_account: "Elimina Account"
+    delete_account_desc: "Elimina permanentemente il tuo account e tutti i modi di dire salvati. Questa azione non può essere annullata."
+    delete_account_button: "Elimina Account"
+    delete_confirm: "Sei sicuro di voler eliminare il tuo account? Questa azione non può essere annullata e tutti i tuoi modi di dire salvati andranno persi per sempre."
+    back_to_app: "Torna all'App"
+    account_deleted: "Il tuo account è stato eliminato con successo."

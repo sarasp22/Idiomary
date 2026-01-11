@@ -41,7 +41,11 @@ fr:
     example: "Exemple"
     search_again: "← Rechercher à Nouveau"
     save_to_dictionary: "💾 Sauvegarder dans le Dictionnaire"
+    save_card: "Sauvegarder la carte"
     signup_prompt: "pour sauvegarder cette expression"
+    want_to_save: "Voulez-vous sauvegarder cette expression?"
+    signup_to_save_button: "S'inscrire pour sauvegarder"
+    already_have_account: "Vous avez déjà un compte?"
   dictionary:
     saved_cards: "Cartes Enregistrées:"
     empty_state: "Votre dictionnaire est vide."
@@ -51,3 +55,52 @@ fr:
   notices:
     saved: "Expression sauvegardée dans votre dictionnaire !"
     removed: "Expression supprimée de votre dictionnaire"
+  devise:
+   sessions:
+     new:
+      sign_in: "Se connecter"
+      subtitle: "Bon retour ! Saisissez vos informations."
+      remember_me: "Se souvenir de moi"
+      forgot_password: "Mot de passe oublié ?"
+   registrations:
+     new:
+      sign_up: "S’inscrire"
+      subtitle: "Créez votre compte pour commencer à enregistrer des expressions."
+   passwords:
+     new:
+      title: "Mot de passe oublié ?"
+      subtitle: "Entrez votre adresse e-mail et nous vous enverrons un lien pour le réinitialiser."
+      submit: "Envoyer le lien de réinitialisation"
+     edit:
+        title: "Changez votre mot de passe"
+        subtitle: "Entrez votre nouveau mot de passe ci-dessous."
+        new_password: "Nouveau mot de passe"
+        confirm_password: "Confirmer le nouveau mot de passe"
+        submit: "Changer mon mot de passe"
+   shared:
+     links:
+      have_account: "Vous avez déjà un compte ?"
+      no_account: "Vous n’avez pas de compte ?"
+      sign_in: "Se connecter"
+      sign_up: "S’inscrire"
+      forgot_password: "Mot de passe oublié ?"
+  settings:
+    title: "Paramètres"
+    account_info: "Informations du Compte"
+    email: "Email"
+    member_since: "Membre depuis"
+    saved_idioms: "Expressions sauvegardées"
+    security: "Sécurité"
+    change_password: "Changer le Mot de Passe"
+    change_password_desc: "Mettez à jour votre mot de passe pour sécuriser votre compte."
+    change_password_button: "Changer le Mot de Passe"
+    reset_password: "Réinitialiser le Mot de Passe"
+    reset_password_desc: "Mot de passe oublié? Envoyez un lien de réinitialisation à votre email."
+    send_reset_link: "Envoyer le Lien de Réinitialisation"
+    danger_zone: "Zone Dangereuse"
+    delete_account: "Supprimer le Compte"
+    delete_account_desc: "Supprimez définitivement votre compte et toutes les expressions sauvegardées. Cette action ne peut pas être annulée."
+    delete_account_button: "Supprimer le Compte"
+    delete_confirm: "Êtes-vous sûr de vouloir supprimer votre compte? Cette action ne peut pas être annulée et toutes vos expressions sauvegardées seront perdues pour toujours."
+    back_to_app: "Retour à l'Application"
+    account_deleted: "Votre compte a été supprimé avec succès."

@@ -33,6 +33,7 @@ en:
     login: "Login"
     sign_up: "Sign-up"
   result:
+  result:
     from: "From"
     to: "to"
     literal: "Literal"
@@ -41,7 +42,11 @@ en:
     example: "Example"
     search_again: "← Search Again"
     save_to_dictionary: "💾 Save to Dictionary"
+    save_card: "Save card"
     signup_prompt: "to save this idiom"
+    want_to_save: "Want to save this idiom?"
+    signup_to_save_button: "Sign up to save"
+    already_have_account: "Already have an account?"
   dictionary:
     saved_cards: "Saved Cards:"
     empty_state: "Your dictionary is empty."
@@ -68,6 +73,13 @@ en:
         title: "Forgot password?"
         subtitle: "Enter your email and we'll send you a reset link."
         submit: "Send reset link"
+
+      edit:
+        title: "Change your password"
+        subtitle: "Enter your new password below."
+        new_password: "New password"
+        confirm_password: "Confirm new password"
+        submit: "Change my password"
     shared:
       links:
         have_account: "Already have an account?"
@@ -75,3 +87,23 @@ en:
         sign_in: "Log in"
         sign_up: "Sign up"
         forgot_password: "Forgot your password?"
+  settings:
+    title: "Settings"
+    account_info: "Account Information"
+    email: "Email"
+    member_since: "Member since"
+    saved_idioms: "Saved idioms"
+    security: "Security"
+    change_password: "Change Password"
+    change_password_desc: "Update your password to keep your account secure."
+    change_password_button: "Change Password"
+    reset_password: "Reset Password"
+    reset_password_desc: "Forgot your password? Send a reset link to your email."
+    send_reset_link: "Send Reset Link"
+    danger_zone: "Danger Zone"
+    delete_account: "Delete Account"
+    delete_account_desc: "Permanently delete your account and all saved idioms. This action cannot be undone."
+    delete_account_button: "Delete Account"
+    delete_confirm: "Are you sure you want to delete your account? This action cannot be undone and all your saved idioms will be lost forever."
+    back_to_app: "Back to App"
+    account_deleted: "Your account has been successfully deleted."

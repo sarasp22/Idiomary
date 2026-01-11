@@ -39,9 +39,13 @@ pt:
     equivalent: "Equivalente"
     meaning: "Significado"
     example: "Exemplo"
-    search_again: "← Buscar Novamente"
+    search_again: "← Pesquisar Novamente"
     save_to_dictionary: "💾 Salvar no Dicionário"
+    save_card: "Salvar cartão"
     signup_prompt: "para salvar esta expressão"
+    want_to_save: "Quer salvar esta expressão?"
+    signup_to_save_button: "Cadastre-se para salvar"
+    already_have_account: "Já tem uma conta?"
   dictionary:
     saved_cards: "Cartões Salvos:"
     empty_state: "Seu dicionário está vazio."
@@ -51,3 +55,54 @@ pt:
   notices:
     saved: "Expressão salva no seu dicionário!"
     removed: "Expressão removida do seu dicionário"
+  devise:
+   sessions:
+     new:
+      sign_in: "Entrar"
+      subtitle: "Bem-vindo de volta! Insira seus dados."
+      remember_me: "Lembrar-me"
+      forgot_password: "Esqueceu a senha?"
+   registrations:
+     new:
+      sign_up: "Registrar-se"
+      subtitle: "Crie sua conta para começar a salvar expressões idiomáticas."
+   passwords:
+     new:
+      title: "Esqueceu a senha?"
+      subtitle: "Insira seu e-mail e enviaremos um link para redefini-la."
+      submit: "Enviar link de redefinição"
+
+      edit:
+        title: "Altere sua senha"
+        subtitle: "Digite sua nova senha abaixo."
+        new_password: "Nova senha"
+        confirm_password: "Confirmar nova senha"
+        submit: "Alterar minha senha"
+   shared:
+     links:
+      have_account: "Já tem uma conta?"
+      no_account: "Não tem uma conta?"
+      sign_in: "Entrar"
+      sign_up: "Registrar-se"
+      forgot_password: "Esqueceu a senha?"
+
+  settings:
+    title: "Configurações"
+    account_info: "Informações da Conta"
+    email: "Email"
+    member_since: "Membro desde"
+    saved_idioms: "Expressões salvas"
+    security: "Segurança"
+    change_password: "Alterar Senha"
+    change_password_desc: "Atualize sua senha para manter sua conta segura."
+    change_password_button: "Alterar Senha"
+    reset_password: "Redefinir Senha"
+    reset_password_desc: "Esqueceu sua senha? Envie um link de redefinição para seu email."
+    send_reset_link: "Enviar Link de Redefinição"
+    danger_zone: "Zona Perigosa"
+    delete_account: "Excluir Conta"
+    delete_account_desc: "Exclua permanentemente sua conta e todas as expressões salvas. Esta ação não pode ser desfeita."
+    delete_account_button: "Excluir Conta"
+    delete_confirm: "Tem certeza de que deseja excluir sua conta? Esta ação não pode ser desfeita e todas as suas expressões salvas serão perdidas para sempre."
+    back_to_app: "Voltar ao Aplicativo"
+    account_deleted: "Sua conta foi excluída com sucesso."

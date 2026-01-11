@@ -16,12 +16,14 @@
 }
 
 .dictionary-title {
-  font-size: 24px;
-  font-weight: 600;
+  font-size: 32px;
+  font-weight: 700;
   color: #333;
-  margin-bottom: 30px;
-  margin-left: 100px;
-  text-align: left;
+  margin-bottom: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
 }
 
 .dictionary-grid {

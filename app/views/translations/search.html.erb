@@ -108,28 +108,28 @@
           </div>
 
           <div class="result-actions">
-            <% if user_signed_in? %>
-              <%= button_to save_translation_path, method: :post, params: {
-                original_idiom: @idiom,
-                source_language: @source_lang,
-                target_language: @target_lang,
-                ai_response: @result
-              }, class: "btn-save-green" do %>
-                <i class="fa-solid fa-bookmark"></i> <%= t('result.save_card', default: 'Salva scheda') %>
-              <% end %>
-            <% else %>
-              <div class="login-invitation">
-                <p><%= t('result.want_to_save', default: 'Vuoi salvare questo modo di dire?') %></p>
-                <%= link_to new_user_registration_path, class: "btn-save-green btn-signup-alt" do %>
-                  <%= t('result.signup_to_save_button', default: 'Registrati per salvare') %>
-                <% end %>
-                <p class="small-login-link">
-                  <%= t('result.already_have_account', default: 'Hai già un account?') %>
-                  <%= link_to t('nav.login'), new_user_session_path %>
-                </p>
-              </div>
-            <% end %>
-          </div>
+  <% if user_signed_in? %>
+    <%= button_to save_translation_path, method: :post, params: {
+      original_idiom: @idiom,
+      source_language: @source_lang,
+      target_language: @target_lang,
+      ai_response: @result
+    }, class: "btn-save-green" do %>
+      <i class="fa-solid fa-bookmark"></i> <%= t('result.save_card', default: 'Save card') %>
+    <% end %>
+  <% else %>
+    <div class="login-invitation">
+      <p><%= t('result.want_to_save', default: 'Want to save this idiom?') %></p>
+      <%= link_to new_user_registration_path, class: "btn-save-green btn-signup-alt" do %>
+        <%= t('result.signup_to_save_button', default: 'Sign up to save') %>
+      <% end %>
+      <p class="small-login-link">
+        <%= t('result.already_have_account', default: 'Already have an account?') %>
+        <%= link_to t('nav.login', default: 'Login'), new_user_session_path %>
+      </p>
+    </div>
+  <% end %>
+</div>
         </div>
       <% end %>
 

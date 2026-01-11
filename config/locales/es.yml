@@ -40,8 +40,12 @@ es:
     meaning: "Significado"
     example: "Ejemplo"
     search_again: "← Buscar de Nuevo"
-    save_to_dictionary: "💾 Guardar en Diccionario"
+    save_to_dictionary: "💾 Guardar en el Diccionario"
+    save_card: "Guardar tarjeta"
     signup_prompt: "para guardar este modismo"
+    want_to_save: "¿Quieres guardar este modismo?"
+    signup_to_save_button: "Regístrate para guardar"
+    already_have_account: "¿Ya tienes una cuenta?"
   dictionary:
     saved_cards: "Tarjetas Guardadas:"
     empty_state: "Tu diccionario está vacío."
@@ -51,3 +55,55 @@ es:
   notices:
     saved: "¡Modismo guardado en tu diccionario!"
     removed: "Modismo eliminado de tu diccionario"
+  devise:
+   sessions:
+     new:
+      sign_in: "Iniciar sesión"
+      subtitle: "¡Bienvenido de nuevo! Introduce tus datos."
+      remember_me: "Recuérdame"
+      forgot_password: "¿Olvidaste tu contraseña?"
+   registrations:
+     new:
+      sign_up: "Regístrate"
+      subtitle: "Crea tu cuenta para empezar a guardar expresiones."
+   passwords:
+     new:
+      title: "¿Olvidaste tu contraseña?"
+      subtitle: "Introduce tu correo electrónico y te enviaremos un enlace para restablecerla."
+      submit: "Enviar enlace de restablecimiento"
+
+     edit:
+      title: "Cambia tu contraseña"
+      subtitle: "Ingresa tu nueva contraseña a continuación."
+      new_password: "Nueva contraseña"
+      confirm_password: "Confirmar nueva contraseña"
+      submit: "Cambiar mi contraseña"
+
+   shared:
+     links:
+      have_account: "¿Ya tienes una cuenta?"
+      no_account: "¿No tienes una cuenta?"
+      sign_in: "Iniciar sesión"
+      sign_up: "Regístrate"
+      forgot_password: "¿Olvidaste tu contraseña?"
+
+  settings:
+    title: "Configuración"
+    account_info: "Información de la Cuenta"
+    email: "Email"
+    member_since: "Miembro desde"
+    saved_idioms: "Modismos guardados"
+    security: "Seguridad"
+    change_password: "Cambiar Contraseña"
+    change_password_desc: "Actualiza tu contraseña para mantener tu cuenta segura."
+    change_password_button: "Cambiar Contraseña"
+    reset_password: "Restablecer Contraseña"
+    reset_password_desc: "¿Olvidaste tu contraseña? Envía un enlace de restablecimiento a tu email."
+    send_reset_link: "Enviar Enlace de Restablecimiento"
+    danger_zone: "Zona Peligrosa"
+    delete_account: "Eliminar Cuenta"
+    delete_account_desc: "Elimina permanentemente tu cuenta y todos los modismos guardados. Esta acción no se puede deshacer."
+    delete_account_button: "Eliminar Cuenta"
+    delete_confirm: "¿Estás seguro de que quieres eliminar tu cuenta? Esta acción no se puede deshacer y todos tus modismos guardados se perderán para siempre."
+    back_to_app: "Volver a la Aplicación"
+    account_deleted: "Tu cuenta ha sido eliminada con éxito."
