@@ -120,14 +120,17 @@
 }
 
 .settings-content-section {
-    background-image:
+  background-image:
     linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
     url('sfondo.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  background-attachment: fixed;
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
+  min-height: 100vh;
+  padding: 40px 20px 80px 20px;
 }
 
 .btn-settings-action {

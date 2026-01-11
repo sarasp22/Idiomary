@@ -1,12 +1,14 @@
 .dictionary-content-section {
-    background-image:
+  background-image:
     linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
     url('sfondo.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  background-attachment: fixed;
   border-top-left-radius: 16px;
-  border-top-right-radius: 16px;  min-height: calc(100vh - 250px);
+  border-top-right-radius: 16px;
+  min-height: 100vh; 
   padding: 40px 20px 80px 20px;
 }
 
@@ -19,6 +21,7 @@
   font-size: 32px;
   font-weight: 700;
   color: #333;
+  margin-top: 20px;
   margin-bottom: 40px;
   display: flex;
   align-items: center;
@@ -34,6 +37,12 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: 20px;
+}
+
+.dictionary-header-section {
+  text-align: center;
+  position: relative;
+  border-bottom: 1px solid #e9ecef;
 }
 
 @media (min-width: 768px) {
