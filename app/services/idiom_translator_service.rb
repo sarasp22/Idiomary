@@ -27,7 +27,7 @@ class IdiomTranslatorService
 
     case response.code
     when 200
-      response.dig('candidates', 0, 'content', 'parts', 0, 'text')
+      format_response(response.dig('candidates', 0, 'content', 'parts', 0, 'text'))
     when 503
       "The translation service is temporarily unavailable. Please try again in a few moments."
     when 429
@@ -56,32 +56,84 @@ class IdiomTranslatorService
     labels = get_labels(interface_lang)
 
     <<~PROMPT
+      You are an expert in idioms and translations.
+
       Idiom: "#{idiom}" (#{lang_names[source_lang]} → #{lang_names[target_lang]})
+      Interface language: #{lang_names[interface_lang]}
 
-      Respond ONLY in #{lang_names[interface_lang]} using this EXACT format:
+      Provide a translation using this EXACT format:
 
-      #{labels[:literal]}: [literal translation of the idiom in #{lang_names[target_lang]}]
-      #{labels[:equivalent]}: [equivalent idiom in #{lang_names[target_lang]}, or write "#{labels[:none]}"]
-      #{labels[:meaning]}: [brief explanation of what the idiom means]
-      #{labels[:example]}: [one short example sentence in #{lang_names[target_lang]}]
+      **#{labels[:literal]}**: [literal translation of "#{idiom}" in #{lang_names[target_lang]}]
 
-      IMPORTANT:
-      - Use the labels exactly as shown above (#{labels[:literal]}, #{labels[:equivalent]}, #{labels[:meaning]}, #{labels[:example]})
-      - The literal translation and equivalent must be in #{lang_names[target_lang]}
-      - The explanation and all other text must be in #{lang_names[interface_lang]}
-      - Keep it concise
+      **#{labels[:equivalent]}**: [equivalent idiom in #{lang_names[target_lang]}, or write "#{labels[:none]}" if there isn't one]
+
+      **#{labels[:meaning]}**: [brief explanation in #{lang_names[interface_lang]} of what this idiom means]
+
+      **#{labels[:example_target]}**: [one example sentence showing how to use the idiom in #{lang_names[target_lang]}]
+
+      **#{labels[:example_source]}**: [one example sentence showing how it's used in the original language #{lang_names[source_lang]}]
+
+      IMPORTANT RULES:
+      - Use ** for bold labels exactly as shown above
+      - The literal translation and equivalent MUST be in #{lang_names[target_lang]}
+      - The meaning explanation MUST be in #{lang_names[interface_lang]}
+      - First example MUST be in #{lang_names[target_lang]}
+      - Second example MUST be in #{lang_names[source_lang]} (the original language of the idiom)
+      - Keep all responses concise and clear
+      - Do NOT add extra formatting or explanations
     PROMPT
   end
 
   def get_labels(lang)
     labels_map = {
-      'en' => { literal: 'Literal', equivalent: 'Equivalent', meaning: 'Meaning', example: 'Example', none: 'none' },
-      'it' => { literal: 'Letterale', equivalent: 'Equivalente', meaning: 'Significato', example: 'Esempio', none: 'nessuno' },
-      'fr' => { literal: 'Littéral', equivalent: 'Équivalent', meaning: 'Signification', example: 'Exemple', none: 'aucun' },
-      'es' => { literal: 'Literal', equivalent: 'Equivalente', meaning: 'Significado', example: 'Ejemplo', none: 'ninguno' },
-      'pt' => { literal: 'Literal', equivalent: 'Equivalente', meaning: 'Significado', example: 'Exemplo', none: 'nenhum' }
+      'en' => {
+        literal: 'Literal',
+        equivalent: 'Equivalent',
+        meaning: 'Meaning',
+        example_target: 'Example',
+        example_source: 'Example (original language)',
+        none: 'none'
+      },
+      'it' => {
+        literal: 'Letterale',
+        equivalent: 'Equivalente',
+        meaning: 'Significato',
+        example_target: 'Esempio',
+        example_source: 'Esempio (lingua originale)',
+        none: 'nessuno'
+      },
+      'fr' => {
+        literal: 'Littéral',
+        equivalent: 'Équivalent',
+        meaning: 'Signification',
+        example_target: 'Exemple',
+        example_source: 'Exemple (langue original)',
+        none: 'aucun'
+      },
+      'es' => {
+        literal: 'Literal',
+        equivalent: 'Equivalente',
+        meaning: 'Significado',
+        example_target: 'Ejemplo',
+        example_source: 'Ejemplo (en lengua original)',
+        none: 'ninguno'
+      },
+      'pt' => {
+        literal: 'Literal',
+        equivalent: 'Equivalente',
+        meaning: 'Significado',
+        example_target: 'Exemplo',
+        example_source: 'Exemplo (original)',
+        none: 'nenhum'
+      }
     }
 
     labels_map[lang] || labels_map['en']
+  end
+
+  def format_response(text)
+    return text unless text
+
+    text.gsub(/\*\*(.*?)\*\*/, '<strong>\1</strong>')
   end
 end
