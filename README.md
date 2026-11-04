@@ -1,85 +1,144 @@
 # 🌍 Idiomary
-Unlock the world of expressions: Discover, translate, and save idioms across multiple languages.
 
-Idiomary is a full-stack Ruby on Rails application fist mobile designed for language lovers and travelers. It uses AI-powered logic to help users find not just literal translations, but the true cultural equivalents of idioms across five major languages: English, Italian, French, Spanish, and Portuguese.
+**Unlock the world of expressions: Discover, translate, and save idioms across multiple languages.**
 
-## ✨ Features
-### 🔍 Smart Search
-* **AI-Driven Translations**: Get literal meanings, cultural equivalents, and usage examples for any idiom.
-* **Multi-Language Support**: Seamlessly translate between English 🇬🇧, Italian 🇮🇹, French 🇫🇷, Spanish 🇪🇸, and Portuguese 🇵🇹.
-* **Dynamic Interface**: Real-time flag updates and interactive language selection for a smooth user experience.
+🌐 **Live Demo:** [idiomary.up.railway.app](https://idiomary.up.railway.app)
 
-### 📚 Personal Dictionary
-* **Save for Later**: Authenticated users can save their favorite idioms into a personal digital dictionary.
-* **Collection Management**: View and manage your saved idioms through a dedicated "My Dictionary" dashboard.
-* **Context Preservation**: Saved idioms include the original phrase, the translation, and the AI-generated cultural context.
+---
 
-### 👤 User Experience
-* **Secure Authentication**: Powered by Devise for safe account creation and personalized data storage.
-* **Responsive Design**: A mobile-first approach with a custom-built UI, ensuring a premium experience on both smartphones and desktops.
-* **Interactive Map UI**: A modern, clean interface featuring a dynamic map section and intuitive navigation.
+## 📖 Overview
+
+**Idiomary** is a mobile-first, full-stack **Ruby on Rails 7** application designed for language lovers, students, and travelers. Powered by **Google Gemini AI**, it helps users discover not just literal word-for-word translations, but the true **cultural equivalents**, meanings, and real-world usage examples of idioms across five major languages:
+
+- 🇬🇧 **English**
+- 🇮🇹 **Italian**
+- 🇫🇷 **French**
+- 🇪🇸 **Spanish**
+- 🇵🇹 **Portuguese**
+
+---
+
+## ✨ Key Features
+
+### 🔍 Smart AI Idiom Search
+- **AI-Driven Cultural Translations**: Get the literal translation, natural cultural equivalent, contextual explanation, and example sentences in both the source and target languages.
+- **5-Language Support**: Seamlessly translate between English, Italian, French, Spanish, and Portuguese.
+- **Localized Interface (`I18n`)**: Switch the entire application UI and AI explanation language dynamically with real-time flag selectors.
+
+### 📚 Personal Dictionary ("My Dictionary")
+- **Save for Later**: Authenticated users can bookmark their favorite idioms into a personal digital dictionary.
+- **Collection Management**: Browse, expand, and remove saved idiom cards from a dedicated dashboard.
+- **Rich Context Preservation**: Each saved card retains the original expression, language pair flags, and full AI-generated breakdown.
+
+### 👤 User Experience & Security
+- **Authentication with Devise**: Secure sign-up, login, password management, and account settings.
+- **Responsive Mobile-First UI**: Custom-crafted interface with a bottom navigation bar on mobile devices and an adaptive grid layout on desktop.
+
+---
 
 ## 🛠 Tech Stack
+
 | Category | Technologies |
 | :--- | :--- |
-| **Framework** | Ruby on Rails 7 |
+| **Framework** | Ruby on Rails 7.1 (Ruby 3.3.5) |
 | **Database** | PostgreSQL |
 | **Authentication** | Devise |
-| **Frontend** | ERB, Custom CSS, JavaScript (Vanilla), Hotwire (Turbo) |
-| **Icons** | FontAwesome 6 |
-| **Translation** | AI Integration (OpenAI/Custom Logic) |
+| **Frontend** | ERB, Custom CSS, Vanilla JavaScript, Hotwire (Turbo & Stimulus) |
+| **AI Integration** | Google Gemini API (`HTTParty` / `RubyLLM`) |
+| **Icons & Typography** | FontAwesome 6, Google Fonts (Inter) |
+| **Deployment** | Docker & Railway |
+
+---
 
 ## 🗃 Database Architecture
-The application follows a clean relational structure to manage user data and linguistic entries:
 
-┌─────────────┐ │ Users │ ──┐ └─────────────┘ │ └──► SavedIdioms (My Dictionary) ├── original_phrase ├── translated_content ├── source_language └── target_language
+```text
+┌──────────────────────┐       1 : N       ┌──────────────────────────┐
+│        Users         │ ────────────────► │    SavedTranslations     │
+├──────────────────────┤                   ├──────────────────────────┤
+│ id (PK)              │                   │ id (PK)                  │
+│ email                │                   │ user_id (FK)             │
+│ encrypted_password   │                   │ original_idiom           │
+│ created_at           │                   │ source_language          │
+│ updated_at           │                   │ target_language          │
+└──────────────────────┘                   │ ai_response              │
+                                           │ created_at / updated_at  │
+                                           └──────────────────────────┘
+```
 
+---
 
-**Key Models:**
-* **User**: Handles authentication and manages the relationship with saved entries.
-* **SavedIdiom**: Stores the idiomatic expressions, translations, and AI-generated metadata linked to a specific user.
+## ⚙️ Local Installation & Setup
 
-## ⚙️ Installation & Setup
 ### 1. Clone the Repository
 ```bash
-git clone [https://github.com/your-username/idiomary.git](https://github.com/your-username/idiomary.git)
+git clone https://github.com/sarasp22/idiomary.git
 cd idiomary
-2. Install Dependencies
-Bash
+```
 
+### 2. Install Dependencies
+```bash
 bundle install
-3. Database Configuration
-Bash
+```
 
-rails db:create
-rails db:migrate
-4. Configure Environment Variables
-Create a .env file in the root directory and add your keys (e.g., for AI translation services):
+### 3. Configure Database
+```bash
+bin/rails db:create
+bin/rails db:migrate
+```
 
-AI_SERVICE_API_KEY=your_key_here
-5. Start the Server
-Bash
+### 4. Configure Environment & Credentials
+Set your Google Gemini API key via Rails encrypted credentials (`config/credentials.yml.enc`) or environment variables:
+```bash
+export GEMINI_API_KEY="your_gemini_api_key_here"
+```
 
-rails server
-Visit: http://localhost:3000
+### 5. Run the Development Server
+```bash
+bin/rails server
+```
+Visit `http://localhost:3000` in your browser.
 
-🤝 Contributing
-Fork the repository
+---
 
-Create a feature branch: git checkout -b feature/AmazingFeature
+## 🚀 Deployment on Railway
 
-Commit your changes: git commit -m 'Add some AmazingFeature'
+Idiomary is containerized with Docker and deployed on **[Railway](https://railway.app/)**.
 
-Push to the branch: git push origin feature/AmazingFeature
+1. **Provision PostgreSQL**: Add a PostgreSQL service to your Railway project.
+2. **Connect GitHub Repository**: Deploy the repository as a Web service (Railway automatically detects the `Dockerfile`).
+3. **Environment Variables**: Configure the following variables in the Railway service settings:
+   - `DATABASE_URL`: `${{Postgres.DATABASE_URL}}`
+   - `RAILS_MASTER_KEY`: Your `config/master.key` value
+   - `GEMINI_API_KEY`: Your Google Gemini API key
+   - `RAILS_ENV`: `production`
+   - `RAILS_LOG_TO_STDOUT`: `enabled`
+4. **Start Command & Networking**:
+   - Start Command: `./bin/rails server -b 0.0.0.0 -p 3000` (database migrations run automatically on boot via `bin/docker-entrypoint`).
+   - Public Networking Port: `3000`.
 
-Open a Pull Request
+---
 
-📄 License
-This project is open source and available under the MIT License.
+## 🤝 Contributing
 
-📧 Contact
-Sara Spadari
-GitHub: @sarasp22
-LinkedIn: sara-spadari
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-Idiomary - Break the ice in every language 🌍✨
+---
+
+## 📄 License
+
+This project is open source and available under the [MIT License](LICENSE).
+
+## 📧 Contact
+
+**Sara Spadari**
+- GitHub: [@sarasp22](https://github.com/sarasp22)
+- LinkedIn: [Sara Spadari](https://www.linkedin.com/in/sara-spadari)
+
+---
+
+*Idiomary — Break the ice in every language* 🌍✨
